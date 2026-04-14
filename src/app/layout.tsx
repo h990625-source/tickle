@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import BottomTabBar from "@/components/BottomTabBar";
+import Head from "./head";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,6 +24,7 @@ export default function RootLayout({
       lang="ko"
       className={`${inter.variable} h-full antialiased`}
     >
+      <Head />
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-50 selection:bg-blue-500 selection:text-white">
         {children}
         <BottomTabBar />
