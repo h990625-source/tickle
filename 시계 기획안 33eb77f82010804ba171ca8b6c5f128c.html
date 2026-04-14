@@ -1,0 +1,1032 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>시계 기획안</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="33eb77f8-2010-804b-a171-ca8b6c5f128c" class="page sans"><header><h1 class="page-title" dir="auto">시계 기획안</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="3c4fce1b-d9a2-4e8c-a70a-f5b2a4d48016" class="">1. 페인포인트</h2></div><div style="display:contents" dir="auto"><h3 id="5ce36801-ee2e-47ea-b0de-5c02209acb04" class="">🔴 A. 타이머 세팅 &amp; 시간 입력의 마찰</h3></div><div style="display:contents" dir="auto"><ol type="1" id="7fdb53c1-9bfc-47b5-a728-af119492c527" class="numbered-list" start="1"><li>작업할 때 타이머처럼 세팅하고 하는 게 번거롭다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="fa1ea9e3-62b7-4182-92c8-9ebb52393c9f" class="numbered-list" start="2"><li>매번 업무 시간을 시각화해야 하는 게 번거롭고 상단에 안 뜨는 게 아쉽다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="e0d1cfbc-eb36-4de5-9789-315b736a9d50" class="numbered-list" start="3"><li>시간을 시간, 분단위나 초단위로 입력할 수 있고, 입력하고 나면 전체가 &#x27;초&#x27;로 환산되고,<br/>시간이 줄어드는 걸 여러 개의 막대 안의 물이 조금씩 줄어드는 방식으로 진행된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="f4dc9fd1-bbb9-4633-b1ae-c7fea44f0484" class="numbered-list" start="4"><li>초는 소수점까지 노출하진 않되, 큼지막하게 화면에 노출된다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="cc398abf-9e08-4427-b750-616c3ab7431d" class="">🟠 B. 과업 완수 &amp; 시간 추적</h3></div><div style="display:contents" dir="auto"><ol type="1" id="94cb85ec-f08f-43e1-ab33-bdcb3de66a34" class="numbered-list" start="1"><li>업무명을 입력하고, 타임스탑처럼 진짜 정해진 시간 안에 과업을 완수하고 싶다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="772e21b7-f8ea-4c1a-adc8-36e59815fd6e" class="numbered-list" start="2"><li>그리고 조금씩 연장해가면서 과업을 완수한 진짜 시간을 추적하고 싶다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="ccd377bc-71d5-4dfa-b412-c525934554ff" class="numbered-list" start="3"><li>작업명을 입력하는 건 선택으로 하고 싶다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="46cd791c-c2ba-452a-aa8e-ed6f051ad87b" class="">🟡 C. 기록 내보내기</h3></div><div style="display:contents" dir="auto"><ol type="1" id="849fc6f0-b915-4824-a99c-aac8fa8b9b0c" class="numbered-list" start="1"><li>완수한 작업은 빠르게 노션으로 옮길 수 있도록 JSON이나 텍스트 형태로 복사하고 싶다.</li></ol></div><div style="display:contents" dir="auto"><hr id="bf5ec4a8-d598-4602-8366-9a71c12d4eb5"/></div><div style="display:contents" dir="auto"><h3 id="15e01cc5-789c-4169-9b01-0e61fd0f7577" class="">🔵 D. 딥워크 블록과 실제 집중 시간의 괴리 <em>(매일매일 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="cbc36081-4664-4973-a6a7-7859476ec881" class="">매일 1.5시간 단위로 딥워크 블록을 캘린더에 배치하고 있지만, <strong>실제로 그 시간 동안 얼마나 집중했는지 확인할 방법이 없다.</strong> 계획표상의 &quot;14:30~16:00 딥워크 #2&quot;와 실제 몰입 시간 사이의 차이를 모른다.</blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="57f473b1-52c7-4523-8405-6edfe298e0a7" class="numbered-list" start="1"><li>딥워크 블록(90분)을 세팅하면, <strong>실제 순수 집중 시간</strong>이 몇 분이었는지 자동 기록되어야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="20cb399a-1383-4593-aa01-e4d01d46bf05" class="numbered-list" start="2"><li>타이머 일시정지·재개 횟수로 <strong>집중 끊김 패턴</strong>을 파악하고 싶다. (예: &quot;오늘 딥워크 #2에서 3번 끊김, 순수 집중 67분&quot;)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="6ef41f7d-7b3c-4fe8-8907-0ec2e688164e" class="numbered-list" start="3"><li>하루에 여러 딥워크 블록을 돌리면, <strong>블록별 집중도를 한눈에 비교</strong>하고 싶다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="9bc7d68b-d544-4dfd-badd-dde1236e215c" class="">🟣 E. 분산된 노력과 우선순위 혼란 <em>(회고 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="ff102b45-e23d-4c08-9c4d-46c1e70df899" class="">&quot;계속 이곳저곳에 분산되게 노력을 투자했던 것 같아&quot; — 토스, 현대차, 두런두런, 존투비, UX학회 등 여러 프로젝트가 동시에 돌아가면서 <strong>어디에 시간을 가장 많이 쓰고 있는지 체감이 안 된다.</strong></blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="16754713-ec67-49e7-aa35-a451e1b8614e" class="numbered-list" start="1"><li>작업명에 <strong>프로젝트/카테고리 태그</strong>를 붙이면, 하루·주간 단위로 <strong>프로젝트별 시간 비중</strong>이 시각화되어야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="e6ed3dfa-2584-483c-8d3f-3a5a1f428ef9" class="numbered-list" start="2"><li>&quot;오늘 가장 임팩트 있었던 30분은?&quot;을 기록할 때, <strong>타이머 데이터 기반으로 어떤 블록이 가장 집중도가 높았는지</strong> 자동으로 제안해 주면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="143101aa-5332-4ea1-b342-fbf22376d57d" class="numbered-list" start="3"><li>이월 작업(Phase 간 미완 태스크)이 반복되는 패턴을 보여줘서, <strong>만성적으로 미루는 작업 유형</strong>을 인식하게 해주면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="958d3407-4c3f-493d-a650-ee53c736764f" class="">🔴 F. 과잉 분석 vs 실행의 균형 <em>(매일매일 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="7c5f15dd-9666-4595-8de4-0c352cd709d3" class="">&quot;과잉 분석 경계 → 지원서는 &#x27;통독 → 수정&#x27; 2패스로 끝내기, 완벽보다 완료&quot; — 분석에 빠져서 실행이 늦어지는 패턴이 반복된다.</blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="0c550182-091d-42d2-aca9-e56ac9b08a35" class="numbered-list" start="1"><li>설정한 시간이 끝나면 <strong>강제 알림(또는 화면 전환)</strong>으로 &quot;이 시간 안에 못 끝냈으면 일단 넘겨라&quot;는 시그널이 필요하다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="d2f51a74-80a5-42c9-b320-804c23c1251c" class="numbered-list" start="2"><li>연장할 때마다 <strong>연장 횟수와 누적 초과 시간</strong>이 눈에 띄게 표시되어, 완벽주의 경향을 자각할 수 있어야 한다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="0096e0b0-8b38-4154-ac45-d2dbfeb46759" class="">🟢 G. 셧다운 루틴 &amp; 하루 회고 자동화 <em>(매일매일 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="30f89395-4f51-4609-90e3-143b3502f6da" class="">매일 &quot;셧다운 루틴&quot;으로 오늘 성과 3가지, 남은 리스크, 내일 Top 1을 기록하는데, <strong>타이머 데이터와 연동되지 않아 수동으로 회상해야 한다.</strong></blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="06bb57ec-8d67-4c32-a3d4-4e5b8d852cc9" class="numbered-list" start="1"><li>하루 타이머 세션이 끝나면, <strong>오늘 완수한 작업 / 초과한 작업 / 미완 작업</strong> 요약이 자동 생성되어야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="689bfa2e-195c-44bb-a1e6-419c281b9c30" class="numbered-list" start="2"><li>셧다운 시 &quot;오늘 총 집중시간 ○시간 ○분, 연장 ○회, 완수율 ○%&quot; 같은 <strong>데일리 리포트</strong>가 한 화면에 보이면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="8e931681-cbd6-45d0-b562-bc3425bac1aa" class="numbered-list" start="3"><li>이 리포트를 <strong>노션으로 원클릭 복사</strong>할 수 있어야 한다. (기존 8번 페인포인트의 확장)</li></ol></div><div style="display:contents" dir="auto"><h3 id="5079757a-8f93-4082-8aae-f048903129c8" class="">🟤 H. 도파민·산만함 차단 <em>(매일매일 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="85bcefd8-aeda-4e7a-90ea-8dbcf2276428" class="">도파민 중독 해결 액션 플랜, 숏폼 차단 전략 등을 별도로 관리할 만큼 <strong>집중 중 딴짓 유혹이 반복적인 문제.</strong></blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="91255add-1e35-4045-a5d1-ca1a7ad75047" class="numbered-list" start="1"><li>타이머 작동 중에는 <strong>다른 앱 전환 시 경고</strong>하거나, 집중 모드와 연동되는 옵션이 있으면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="462eb034-adf6-4404-8e87-bd2363d23d66" class="numbered-list" start="2"><li>&quot;집중 중 이탈 없이 완주한 블록&quot; 수를 <strong>연속 기록(스트릭)</strong>으로 보여줘서 게이미피케이션 동기를 줬으면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><h3 id="5ff3adfe-0217-4c46-a704-5bd6300e0f77" class="">⚫ I. 궁극적 목표와 일상 실행의 연결 <em>(회고 기반)</em></h3></div><div style="display:contents" dir="auto"><blockquote id="33eb77f8-2010-8083-8261-ca0ca87fb60f" class="">&quot;카카오에 들어가는 게 하나의 스텝일 뿐이지 내가 궁극적으로 이루고자 하는 목표는 아니야&quot; — 매일의 작업이 <strong>장기 로드맵의 어느 지점에 있는지 체감이 안 된다.</strong></blockquote></div><div style="display:contents" dir="auto"><ol type="1" id="33eb77f8-2010-8003-8321-d0812f2c28c1" class="numbered-list" start="1"><li>작업에 <strong>장기 목표 태그</strong>(예: &quot;미국 CEO 로드맵 → 포트폴리오 완성 → 토스 지원&quot;)를 연결하면, 오늘 한 작업이 로드맵 진행률에 얼마나 기여했는지 보여주면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="33eb77f8-2010-803e-b595-e9c55e135d20" class="numbered-list" start="2"><li>주간 회고 시 &quot;이번 주 시간의 ○%가 장기 목표 A에, ○%가 단기 이슈 대응에 사용됨&quot; 같은 <strong>목표 정렬도</strong>를 보여주면 좋겠다.</li></ol></div><div style="display:contents" dir="auto"><hr id="1bbd2fa6-7812-4890-ba26-3cfc0f54db0c"/></div><div style="display:contents" dir="auto"><hr id="b51b7231-e7fc-4b7b-8123-45effb0bdc4d"/></div><div style="display:contents" dir="auto"><h1 id="5a94a0fa-48d8-4480-bd63-41770c8475e0" class="">🚀 기획안: DeepFlow — 딥워크 집중 타이머 웹앱</h1></div><div style="display:contents" dir="ltr"><figure class="callout" style="white-space:pre-wrap;display:flex" id="6420a9c8-11cf-46be-9785-4e40e2faa228"><div style="font-size:1.5em"><span class="icon">⚙️</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2584f988-9456-493a-9d2a-21e236c2cea8" class=""><strong>Tech Stack</strong> : Next.js (App Router) · Vercel 배포 · Supabase (PostgreSQL + Auth) · 카카오 로그인 · TailwindCSS · AntiGravity 활용 바이브 코딩</p></div></div></figure></div><div style="display:contents" dir="auto"><hr id="5f4dd60f-c5f8-4546-8396-cd352b69a5d6"/></div><div style="display:contents" dir="auto"><h2 id="778ca08c-8ce9-4837-9f5c-b806ca05f6aa" class="">2. PRD (Product Requirements Document)</h2></div><div style="display:contents" dir="auto"><h3 id="4f11d12b-e668-413b-a8d1-cd699fa5511b" class="">2-1. 제품 개요</h3></div><div style="display:contents" dir="ltr"><table id="d5517bec-9528-4598-9500-e4d87f5d110f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="add22aac-4895-4675-9d86-cc61f84e5e88"><th id="j:Sm" class="simple-table-header-color simple-table-header">항목</th><th id="?Ugp" class="simple-table-header-color simple-table-header">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="c6c3917b-d264-4e42-a129-695528fc98bb"><td id="j:Sm" class=""><strong>제품명</strong></td><td id="?Ugp" class="">DeepFlow (딥플로우)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9c6c57a3-6b0a-4142-affb-864fe758c06a"><td id="j:Sm" class=""><strong>한 줄 정의</strong></td><td id="?Ugp" class="">딥워크 블록 기반 집중 타이머 + 프로젝트별 시간 추적 + 셧다운 리포트 웹앱</td></tr></div><div style="display:contents" dir="ltr"><tr id="f4e500e6-3c09-4a0e-ac85-3087c03e8725"><td id="j:Sm" class=""><strong>타겟 유저</strong></td><td id="?Ugp" class="">매일 딥워크 블록을 설계하고 실행하지만, 계획 vs 실제 집중 시간의 괴리를 자각하고 싶은 개인 생산성 추구자 (취준생, 프리랜서, 1인 기획자)</td></tr></div><div style="display:contents" dir="ltr"><tr id="c083ea13-8225-4eb2-89b0-4915426d71e7"><td id="j:Sm" class=""><strong>플랫폼</strong></td><td id="?Ugp" class="">모바일 퍼스트 반응형 웹앱 (PWA 지원)</td></tr></div><div style="display:contents" dir="ltr"><tr id="ad9fdb24-e59e-4e11-9fa0-c14c2954fbf0"><td id="j:Sm" class=""><strong>배포</strong></td><td id="?Ugp" class="">Vercel (Next.js)</td></tr></div><div style="display:contents" dir="ltr"><tr id="160571e4-6a4b-448d-af85-6d9df54f1c2b"><td id="j:Sm" class=""><strong>인증</strong></td><td id="?Ugp" class="">카카오 로그인 (Supabase Auth + OAuth 2.0)</td></tr></div><div style="display:contents" dir="ltr"><tr id="fd786ba4-0d93-4777-96ea-866ab3819946"><td id="j:Sm" class=""><strong>DB</strong></td><td id="?Ugp" class="">Supabase PostgreSQL</td></tr></div><div style="display:contents" dir="ltr"><tr id="d64a6b1f-4872-43c2-947f-b104c94b17bc"><td id="j:Sm" class=""><strong>빌드 도구</strong></td><td id="?Ugp" class="">AntiGravity (바이브 코딩)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="ecf31509-39a5-4493-8d36-6db8f9b24e2e" class="">2-2. 핵심 가치 제안 (Value Proposition)</h3></div><div style="display:contents" dir="ltr"><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="f9a357bf-5265-458f-9683-b243cec32414"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="4422cb1c-a364-4bd5-aca7-44552d1abdc5" class=""><strong>&quot;계획한 시간이 아니라, 진짜 몰입한 시간을 보여주는 타이머&quot;</strong></p></div><div style="display:contents" dir="auto"><p id="58bcc987-bdd6-468c-9e46-4eb129150da2" class="">기존 타이머 앱은 <em>세팅 → 카운트다운 → 완료</em>에서 끝난다.</p></div><div style="display:contents" dir="auto"><p id="ec97b90f-c99b-4d1b-93ea-12cfdde224a1" class="">DeepFlow는 <strong>일시정지·연장·중단</strong> 모든 순간을 기록하여,</p></div><div style="display:contents" dir="auto"><p id="d18c3208-1bf6-4ffa-bed6-73e7036e840e" class="">&quot;실제로 몇 분 집중했는가&quot;를 정확히 알려주고 하루 끝에 셧다운 리포트로 마무리한다.</p></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="b79f5254-ad39-426d-8745-17076a13749e" class="">2-3. 핵심 기능 요구사항 (Functional Requirements)</h3></div><div style="display:contents" dir="auto"><h4 id="67b1e6a6-f6c9-4a5c-9abd-4ce869c4a2b5" class="">FR-1. 타이머 엔진 <em>(페인포인트 A, B, F)</em></h4></div><div style="display:contents" dir="ltr"><table id="78ef9472-8b05-405e-9883-181ff882de29" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b6ea60ca-fe48-4f5e-8356-c10472c4125d"><th id=";Faf" class="simple-table-header-color simple-table-header">ID</th><th id="Z~pN" class="simple-table-header-color simple-table-header">요구사항</th><th id=":jk~" class="simple-table-header-color simple-table-header">우선순위</th><th id="{N_p" class="simple-table-header-color simple-table-header">페인포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="bcae8fe9-eb3a-402c-bf57-7b65d72946ca"><td id=";Faf" class="">FR-1.1</td><td id="Z~pN" class="">시/분/초 입력 → 전체 <strong>초 단위 환산</strong> 후 카운트다운</td><td id=":jk~" class="">P0</td><td id="{N_p" class="">A-3</td></tr></div><div style="display:contents" dir="ltr"><tr id="73853371-a93d-45e0-8a8e-e6414c94938d"><td id=";Faf" class="">FR-1.2</td><td id="Z~pN" class=""><strong>물 빠지는 막대 바</strong> 시각화 (여러 막대에서 물이 줄어드는 애니메이션)</td><td id=":jk~" class="">P0</td><td id="{N_p" class="">A-3</td></tr></div><div style="display:contents" dir="ltr"><tr id="0cb76516-c6c3-473d-bb26-5db77c472a7a"><td id=";Faf" class="">FR-1.3</td><td id="Z~pN" class="">남은 초를 <strong>소수점 없이 큼지막하게</strong> 화면 중앙 표시</td><td id=":jk~" class="">P0</td><td id="{N_p" class="">A-4</td></tr></div><div style="display:contents" dir="ltr"><tr id="5d28c984-4909-4137-af46-f5772a730a3b"><td id=";Faf" class="">FR-1.4</td><td id="Z~pN" class="">일시정지 / 재개 / 연장 (+5분, +10분, 커스텀)</td><td id=":jk~" class="">P0</td><td id="{N_p" class="">B-2, F-2</td></tr></div><div style="display:contents" dir="ltr"><tr id="1d76d7f3-91af-47af-8891-dbd8ad765e5d"><td id=";Faf" class="">FR-1.5</td><td id="Z~pN" class="">연장 시 <strong>연장 횟수 + 누적 초과 시간</strong> 배지 노출</td><td id=":jk~" class="">P1</td><td id="{N_p" class="">F-2</td></tr></div><div style="display:contents" dir="ltr"><tr id="09899942-ddb6-4762-91e7-408b032adc3c"><td id=";Faf" class="">FR-1.6</td><td id="Z~pN" class="">시간 종료 시 <strong>강제 알림</strong> (진동 + 화면 전환 + &quot;넘겨라&quot; 메시지)</td><td id=":jk~" class="">P1</td><td id="{N_p" class="">F-1</td></tr></div><div style="display:contents" dir="ltr"><tr id="ce305a8d-f4ff-4a0a-91d7-b5e41e569fa6"><td id=";Faf" class="">FR-1.7</td><td id="Z~pN" class=""><strong>원클릭 빠른 시작</strong> (최근 세팅 기억, 프리셋 90분/60분/25분)</td><td id=":jk~" class="">P1</td><td id="{N_p" class="">A-1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="fab378c9-4a2f-4493-b351-3011fb086139" class="">FR-2. 작업 &amp; 프로젝트 관리 <em>(페인포인트 B, E)</em></h4></div><div style="display:contents" dir="ltr"><table id="e123cab1-1170-4c3e-905d-1673c7a1b63f" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="0d181536-cbf7-4189-a3a9-4c60f9fbc9c0"><th id="LuE&gt;" class="simple-table-header-color simple-table-header">ID</th><th id="Q;QV" class="simple-table-header-color simple-table-header">요구사항</th><th id="=l]i" class="simple-table-header-color simple-table-header">우선순위</th><th id="d`\n" class="simple-table-header-color simple-table-header">페인포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3522443b-3518-4314-9ee3-719febcd3f28"><td id="LuE&gt;" class="">FR-2.1</td><td id="Q;QV" class="">작업명 입력은 <strong>선택 사항</strong> (미입력 시 &quot;이름 없는 세션&quot;)</td><td id="=l]i" class="">P0</td><td id="d`\n" class="">B-3</td></tr></div><div style="display:contents" dir="ltr"><tr id="c3302896-8ef2-4825-a20a-0fb89bee8641"><td id="LuE&gt;" class="">FR-2.2</td><td id="Q;QV" class="">작업에 <strong>프로젝트 태그</strong> 부착 (색상 구분, 최대 10개)</td><td id="=l]i" class="">P1</td><td id="d`\n" class="">E-1</td></tr></div><div style="display:contents" dir="ltr"><tr id="7cd2dd0b-035f-46d4-937a-057e4b8d4b87"><td id="LuE&gt;" class="">FR-2.3</td><td id="Q;QV" class="">프로젝트별 <strong>하루/주간 시간 비중</strong> 도넛 차트</td><td id="=l]i" class="">P1</td><td id="d`\n" class="">E-1</td></tr></div><div style="display:contents" dir="ltr"><tr id="8f2633e5-5b2b-4abf-abda-5e3e098ece8d"><td id="LuE&gt;" class="">FR-2.4</td><td id="Q;QV" class="">이월 작업 자동 감지 → <strong>&quot;3일 연속 미완&quot; 경고 배지</strong></td><td id="=l]i" class="">P2</td><td id="d`\n" class="">E-3</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="253ca3bd-a02a-4dea-afbc-68c259465c8c" class="">FR-3. 집중도 분석 <em>(페인포인트 D)</em></h4></div><div style="display:contents" dir="ltr"><table id="9a167b21-2e95-49a0-8d0f-bba102161c3a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b44f779b-e512-458a-acac-a0f88a5eaae5"><th id="?~kf" class="simple-table-header-color simple-table-header">ID</th><th id=":j&gt;`" class="simple-table-header-color simple-table-header">요구사항</th><th id="aXfh" class="simple-table-header-color simple-table-header">우선순위</th><th id="u=pv" class="simple-table-header-color simple-table-header">페인포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="dddaddf4-f9d7-4033-a892-b7fd0b555bed"><td id="?~kf" class="">FR-3.1</td><td id=":j&gt;`" class="">세션별 <strong>순수 집중 시간</strong> = 총 시간 − 일시정지 시간 자동 계산</td><td id="aXfh" class="">P0</td><td id="u=pv" class="">D-1</td></tr></div><div style="display:contents" dir="ltr"><tr id="e0fb9922-ddc7-4d10-8fb2-b777665d5766"><td id="?~kf" class="">FR-3.2</td><td id=":j&gt;`" class="">일시정지·재개 횟수 → <strong>집중 끊김 횟수</strong> 기록</td><td id="aXfh" class="">P1</td><td id="u=pv" class="">D-2</td></tr></div><div style="display:contents" dir="ltr"><tr id="bd03d77c-91ab-4032-80a9-e1f0fd992bb3"><td id="?~kf" class="">FR-3.3</td><td id=":j&gt;`" class="">하루 여러 블록의 <strong>집중도 비교 바 차트</strong> (블록별 순수집중률)</td><td id="aXfh" class="">P1</td><td id="u=pv" class="">D-3</td></tr></div><div style="display:contents" dir="ltr"><tr id="88b433e4-890f-4304-8d36-c7cc2fe18aa7"><td id="?~kf" class="">FR-3.4</td><td id=":j&gt;`" class="">&quot;오늘 가장 집중도 높았던 블록&quot; <strong>자동 하이라이트</strong></td><td id="aXfh" class="">P2</td><td id="u=pv" class="">E-2</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="655e8f27-35a2-44d9-9da3-fefe330bf157" class="">FR-4. 셧다운 리포트 &amp; 내보내기 <em>(페인포인트 C, G)</em></h4></div><div style="display:contents" dir="ltr"><table id="c05019d1-b484-4319-9502-7f902a1da56b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="a1929da1-7d15-492d-8a1e-753c00ec38ac"><th id="^LQh" class="simple-table-header-color simple-table-header">ID</th><th id="?iGe" class="simple-table-header-color simple-table-header">요구사항</th><th id="F&lt;_[" class="simple-table-header-color simple-table-header">우선순위</th><th id="MUKo" class="simple-table-header-color simple-table-header">페인포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="7120c94a-526d-43f0-a2ab-6d5a0f165c38"><td id="^LQh" class="">FR-4.1</td><td id="?iGe" class="">하루 종료 시 <strong>데일리 리포트</strong> 자동 생성 (총 집중시간, 연장 횟수, 완수율, 완수/초과/미완 리스트)</td><td id="F&lt;_[" class="">P0</td><td id="MUKo" class="">G-1, G-2</td></tr></div><div style="display:contents" dir="ltr"><tr id="48a6b14e-85f1-4077-93af-13df3299f90e"><td id="^LQh" class="">FR-4.2</td><td id="?iGe" class="">리포트를 <strong>JSON / 마크다운 텍스트</strong>로 클립보드 복사</td><td id="F&lt;_[" class="">P0</td><td id="MUKo" class="">C-1, G-3</td></tr></div><div style="display:contents" dir="ltr"><tr id="e15acde6-bb46-4b24-9d48-f477765658bd"><td id="^LQh" class="">FR-4.3</td><td id="?iGe" class="">노션 복사 시 <strong>구조화된 텍스트</strong> (제목, 불릿, 테이블 형태)</td><td id="F&lt;_[" class="">P1</td><td id="MUKo" class="">C-1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="7218252b-814c-4a5a-9f7c-b0d4b4d2b315" class="">FR-5. 게이미피케이션 &amp; 동기부여 <em>(페인포인트 H, I)</em></h4></div><div style="display:contents" dir="ltr"><table id="39e5a577-96d9-404b-87e2-b38014f8d24d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="428b03df-d438-4c3f-a543-fc5ab210da5f"><th id="|f&gt;=" class="simple-table-header-color simple-table-header">ID</th><th id=";MLX" class="simple-table-header-color simple-table-header">요구사항</th><th id="EGSX" class="simple-table-header-color simple-table-header">우선순위</th><th id="f}FK" class="simple-table-header-color simple-table-header">페인포인트</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="76e911ee-b758-43f7-b77d-fb1f238769a1"><td id="|f&gt;=" class="">FR-5.1</td><td id=";MLX" class="">이탈 없이 완주한 블록 → <strong>연속 스트릭</strong> 카운트 + 불꽃 아이콘</td><td id="EGSX" class="">P1</td><td id="f}FK" class="">H-2</td></tr></div><div style="display:contents" dir="ltr"><tr id="a3430d8d-32b6-4313-a0e3-b7378dddfef0"><td id="|f&gt;=" class="">FR-5.2</td><td id=";MLX" class="">타이머 중 <strong>탭 이탈 감지</strong> → 경고 토스트 + 이탈 횟수 기록</td><td id="EGSX" class="">P1</td><td id="f}FK" class="">H-1</td></tr></div><div style="display:contents" dir="ltr"><tr id="dd37206c-1f92-455f-8a28-9c0e4993e7d5"><td id="|f&gt;=" class="">FR-5.3</td><td id=";MLX" class="">작업에 <strong>장기 목표 태그</strong> 연결 → 주간 목표 정렬도 퍼센트 표시</td><td id="EGSX" class="">P2</td><td id="f}FK" class="">I-1, I-2</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="223de6da-60ea-4254-9dd1-0eca10a28155" class="">FR-6. 인증 &amp; 데이터 <em>(비기능)</em></h4></div><div style="display:contents" dir="ltr"><table id="bfe6fcc9-9de4-453f-97ce-57faef142847" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="967279bf-933d-4808-86ce-dc48add4a15c"><th id="yLP{" class="simple-table-header-color simple-table-header">ID</th><th id="k~aM" class="simple-table-header-color simple-table-header">요구사항</th><th id="Lp\P" class="simple-table-header-color simple-table-header">우선순위</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="b70f20f1-2f3a-4cab-9495-0b1edbcb0f61"><td id="yLP{" class="">FR-6.1</td><td id="k~aM" class=""><strong>카카오 로그인</strong> (Supabase Auth + OAuth 2.0) — 비로그인 시 로컬 스토리지, 로그인 시 DB 동기화</td><td id="Lp\P" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="0e1db0d4-fb0f-4495-9c14-04a78520a119"><td id="yLP{" class="">FR-6.2</td><td id="k~aM" class="">모든 세션 데이터 <strong>Supabase PostgreSQL</strong> 저장</td><td id="Lp\P" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="0257c9c8-498a-46cf-b982-83383d9ef7c9"><td id="yLP{" class="">FR-6.3</td><td id="k~aM" class="">PWA 설치 지원 (홈 화면 추가, 오프라인 기본 타이머)</td><td id="Lp\P" class="">P2</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="f775fce7-9b49-48dd-99f1-8f90552216b6" class="">2-4. 비기능 요구사항 (Non-Functional Requirements)</h3></div><div style="display:contents" dir="ltr"><table id="486684ca-e958-4004-84b6-a169e3efc2aa" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="44ad8eb6-2b33-4416-bd0a-a9f436040fa0"><th id="W&lt;Lt" class="simple-table-header-color simple-table-header">카테고리</th><th id="Z;_K" class="simple-table-header-color simple-table-header">요구사항</th><th id="HiBL" class="simple-table-header-color simple-table-header">목표</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="a281d662-2915-4fdf-a252-69a746673c15"><td id="W&lt;Lt" class=""><strong>성능</strong></td><td id="Z;_K" class="">타이머 렌더링 프레임 드롭 없이 60fps 유지</td><td id="HiBL" class="">requestAnimationFrame 활용</td></tr></div><div style="display:contents" dir="ltr"><tr id="563b67ef-4f7f-475b-b7fe-57de1da05e61"><td id="W&lt;Lt" class=""><strong>성능</strong></td><td id="Z;_K" class="">첫 화면 로드 (LCP)</td><td id="HiBL" class="">&lt; 1.5초 (Vercel Edge)</td></tr></div><div style="display:contents" dir="ltr"><tr id="b3b5f35b-1395-41fa-95df-f0cd7f053f81"><td id="W&lt;Lt" class=""><strong>반응형</strong></td><td id="Z;_K" class="">모바일(360px) ~ 데스크톱(1440px) 완벽 대응</td><td id="HiBL" class="">TailwindCSS breakpoints</td></tr></div><div style="display:contents" dir="ltr"><tr id="e59e1f03-ae74-4404-a220-8a46fd99592a"><td id="W&lt;Lt" class=""><strong>접근성</strong></td><td id="Z;_K" class="">스크린리더 대응, 키보드 네비게이션</td><td id="HiBL" class="">WCAG 2.1 AA</td></tr></div><div style="display:contents" dir="ltr"><tr id="89b98d08-c914-4337-8ce2-6c5f86b86492"><td id="W&lt;Lt" class=""><strong>보안</strong></td><td id="Z;_K" class="">RLS(Row Level Security)로 사용자 데이터 격리</td><td id="HiBL" class="">Supabase RLS 정책</td></tr></div><div style="display:contents" dir="ltr"><tr id="80d5a7e5-4805-4378-bd07-8b6b2e599f48"><td id="W&lt;Lt" class=""><strong>오프라인</strong></td><td id="Z;_K" class="">네트워크 끊김 시 로컬 스토리지 → 복구 시 동기화</td><td id="HiBL" class="">Service Worker</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="19fc67ef-5459-41c2-823e-85ba02b29aaf" class="">2-5. 릴리스 로드맵</h3></div><div style="display:contents" dir="ltr"><table id="8699f8b0-7b76-4578-b2fb-ac4c5b2a4c68" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2d63b387-0798-4fc0-a70d-d15dead7dcbe"><th id="Hh`N" class="simple-table-header-color simple-table-header">Phase</th><th id="fuNB" class="simple-table-header-color simple-table-header">범위</th><th id="^gDH" class="simple-table-header-color simple-table-header">목표 기간</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="20d4029e-d3ce-464a-9d85-2f25f2722fda"><td id="Hh`N" class=""><strong>MVP (v0.1)</strong></td><td id="fuNB" class="">타이머 엔진 + 물 빠지는 바 + 작업명 입력 + 카카오 로그인 + JSON 복사</td><td id="^gDH" class="">2주</td></tr></div><div style="display:contents" dir="ltr"><tr id="5da2366f-c739-41a1-ae3f-391139e636fb"><td id="Hh`N" class=""><strong>v0.2</strong></td><td id="fuNB" class="">프로젝트 태그 + 집중도 분석 + 셧다운 리포트</td><td id="^gDH" class="">+1주</td></tr></div><div style="display:contents" dir="ltr"><tr id="d7c4ad17-73a3-4fca-ae78-a1d720acf74d"><td id="Hh`N" class=""><strong>v0.3</strong></td><td id="fuNB" class="">스트릭 + 탭 이탈 감지 + 주간 통계</td><td id="^gDH" class="">+1주</td></tr></div><div style="display:contents" dir="ltr"><tr id="e0f3c728-57a7-40b6-ac68-42cb63107df9"><td id="Hh`N" class=""><strong>v1.0</strong></td><td id="fuNB" class="">장기 목표 연결 + PWA + 이월 작업 감지</td><td id="^gDH" class="">+2주</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="c6fc6580-debd-4e28-8955-4198e0e2f28f"/></div><div style="display:contents" dir="auto"><h2 id="a0eb4c6b-5fae-4880-b1fd-3ac810704f7c" class="">3. MD (Market Document — 경쟁사 분석)</h2></div><div style="display:contents" dir="auto"><h3 id="e2dd65eb-8d98-43c6-b05d-7a6cd0815ef1" class="">3-1. 경쟁 앱 비교 매트릭스</h3></div><div style="display:contents" dir="ltr"><table id="4c33b80f-5c2a-494e-aa89-d80fcdf4c740" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="48b5f20f-fb53-4791-a50c-d45a68d30543"><th id="TJxe" class="simple-table-header-color simple-table-header">기능 \ 앱</th><th id="~OqV" class="simple-table-header-color simple-table-header"><strong>Pomofocus</strong></th><th id="jM{V" class="simple-table-header-color simple-table-header"><strong>Forest</strong></th><th id="Xar;" class="simple-table-header-color simple-table-header"><strong>Focus To-Do</strong></th><th id="gIPH" class="simple-table-header-color simple-table-header"><strong>Toggl Track</strong></th><th id="AXre" class="simple-table-header-color simple-table-header"><strong>딥포커스</strong></th><th id="sECW" class="simple-table-header-color simple-table-header"><strong>Habi</strong></th><th id="HvYL" class="simple-table-header-color simple-table-header"><strong>DeepFlow (Ours)</strong></th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="ccdeb4d7-182e-4f44-a39d-9f6497610f95"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>플랫폼</strong></th><td id="~OqV" class="">웹</td><td id="jM{V" class="">iOS/AOS</td><td id="Xar;" class="">크로스</td><td id="gIPH" class="">크로스</td><td id="AXre" class="">AOS</td><td id="sECW" class="">iOS/AOS</td><td id="HvYL" class="">웹 (PWA)</td></tr></div><div style="display:contents" dir="ltr"><tr id="47bdf511-2d81-410d-91a7-1d3aaf03f7e5"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>로그인 없이 사용</strong></th><td id="~OqV" class="">✅</td><td id="jM{V" class="">❌</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">❌</td><td id="AXre" class="">✅</td><td id="sECW" class="">❌</td><td id="HvYL" class="">✅ (로컬) + 카카오</td></tr></div><div style="display:contents" dir="ltr"><tr id="21be1437-16c5-45f8-a4f1-02c2592e19c6"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>커스텀 타이머</strong></th><td id="~OqV" class="">△ (분 단위)</td><td id="jM{V" class="">△</td><td id="Xar;" class="">✅</td><td id="gIPH" class="">✅</td><td id="AXre" class="">✅</td><td id="sECW" class="">✅</td><td id="HvYL" class="">✅ (시/분/초)</td></tr></div><div style="display:contents" dir="ltr"><tr id="0d38df77-86f8-418c-8bda-88f8e54f6129"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>시각적 카운트다운</strong></th><td id="~OqV" class="">원형 바</td><td id="jM{V" class="">나무 성장</td><td id="Xar;" class="">원형 바</td><td id="gIPH" class="">없음</td><td id="AXre" class="">없음</td><td id="sECW" class="">기본</td><td id="HvYL" class="">🌊 물빠지는 막대바</td></tr></div><div style="display:contents" dir="ltr"><tr id="f55f74e2-366d-482a-a756-ffbd79b88264"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>일시정지 지원</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">❌ (나무 죽음)</td><td id="Xar;" class="">✅</td><td id="gIPH" class="">✅</td><td id="AXre" class="">✅</td><td id="sECW" class="">✅</td><td id="HvYL" class="">✅ + 끊김 횟수 기록</td></tr></div><div style="display:contents" dir="ltr"><tr id="f69bb26a-2b32-45e1-8a72-a19d37fdea74"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>연장 추적</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">❌</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">수동</td><td id="AXre" class="">✅</td><td id="sECW" class="">❌</td><td id="HvYL" class="">✅ 자동 + 초과시간 배지</td></tr></div><div style="display:contents" dir="ltr"><tr id="f579452f-22bb-4002-9933-2bcec98e6f8c"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>프로젝트별 추적</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">태그</td><td id="Xar;" class="">프로젝트</td><td id="gIPH" class="">✅</td><td id="AXre" class="">✅</td><td id="sECW" class="">습관 연결</td><td id="HvYL" class="">✅ + 비중 도넛차트</td></tr></div><div style="display:contents" dir="ltr"><tr id="0e8e1862-399e-407e-95ad-6b93ad41a375"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>순수 집중 시간 계산</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">❌</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">❌</td><td id="AXre" class="">❌</td><td id="sECW" class="">❌</td><td id="HvYL" class="">✅ (총시간 − 정지시간)</td></tr></div><div style="display:contents" dir="ltr"><tr id="e4056ee1-955e-4991-abb9-a10def59e4b9"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>셧다운 리포트</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">❌</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">리포트</td><td id="AXre" class="">❌</td><td id="sECW" class="">리뷰</td><td id="HvYL" class="">✅ 자동 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="447f6a04-b11e-4860-81f0-20bf6ec8a8d6"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>노션 내보내기</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">❌</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">CSV</td><td id="AXre" class="">❌</td><td id="sECW" class="">❌</td><td id="HvYL" class="">✅ JSON + MD 복사</td></tr></div><div style="display:contents" dir="ltr"><tr id="b4695cf2-c048-4fb3-9784-3acff3881485"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>탭 이탈 감지</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">앱 이탈=사망</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">❌</td><td id="AXre" class="">❌</td><td id="sECW" class="">스크린타임</td><td id="HvYL" class="">✅ 경고 + 기록</td></tr></div><div style="display:contents" dir="ltr"><tr id="3d0fa54e-6d0c-4664-befd-945333fda512"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>스트릭/게이미피케이션</strong></th><td id="~OqV" class="">❌</td><td id="jM{V" class="">✅ 나무 숲</td><td id="Xar;" class="">❌</td><td id="gIPH" class="">❌</td><td id="AXre" class="">❌</td><td id="sECW" class="">✅ 습관</td><td id="HvYL" class="">✅ 완주 스트릭 🔥</td></tr></div><div style="display:contents" dir="ltr"><tr id="1366de2a-009b-41fc-8bf9-8832e3ca72b3"><th id="TJxe" class="simple-table-header-color simple-table-header"><strong>가격</strong></th><td id="~OqV" class="">무료</td><td id="jM{V" class="">₩5,900</td><td id="Xar;" class="">프리미엄</td><td id="gIPH" class="">$10/월</td><td id="AXre" class="">무료</td><td id="sECW" class="">$4.99/월</td><td id="HvYL" class=""><strong>무료</strong></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="b76d3c8f-fe86-4e04-8ea6-c25bf23bc5c0" class="">3-2. 경쟁 우위 분석 (Competitive Moat)</h3></div><div style="display:contents" dir="ltr"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="07c15ea0-dff0-48f5-b4dc-4be3114d1427"><div style="font-size:1.5em"><span class="icon">🏆</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="d328f8a5-0b04-4c80-8c96-9fc960de9826" class=""><strong>DeepFlow만의 차별점 3가지:</strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="759e8056-a55a-4e25-9271-2397d4019c66" class="numbered-list" start="1"><li><strong>🌊 물 빠지는 막대 바</strong> — 원형 프로그레스 바에 지친 유저에게 새로운 시각적 긴장감 제공</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="f0379f99-5ff4-48ec-aa5f-66fb09c88ccb" class="numbered-list" start="2"><li><strong>🧠 순수 집중 시간 = 총 시간 − 정지 시간</strong> — 다른 앱은 단순 카운트다운만 제공, DeepFlow는 실제 몰입 퀄리티를 수치화</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="be26d7fc-f673-4686-b172-62b7a424cb10" class="numbered-list" start="3"><li><strong>📋 셧다운 리포트 → 노션 원클릭 복사</strong> — 딥워크 실천자의 기존 노션 워크플로우와 자연스럽게 연결</li></ol></div></div></figure></div><div style="display:contents" dir="auto"><h3 id="4326c5fc-46eb-4ba9-a61f-892f8ecc8ac3" class="">3-3. 경쟁사별 세부 인사이트</h3></div><div style="display:contents" dir="auto"><ul id="96f4754c-3bda-4bb0-9750-3c2be4ce1621" class="toggle"><li><details open=""><summary>🟢 Pomofocus — 가장 가까운 벤치마크</summary><div style="display:contents" dir="auto"><ul id="08740aae-cc20-49e2-b272-d665f3320477" class="bulleted-list"><li style="list-style-type:disc"><strong>장점</strong>: 로그인 없이 즉시 사용, 깔끔한 UI, 웹 기반</li></ul></div><div style="display:contents" dir="auto"><ul id="4402310d-b14a-4b2c-9516-fedea4644e5f" class="bulleted-list"><li style="list-style-type:disc"><strong>단점</strong>: 일시정지 불가, 프로젝트 분류 없음, 통계 빈약</li></ul></div><div style="display:contents" dir="auto"><ul id="9a5c79a3-ed81-4910-b7b3-ea4ee1e55d64" class="bulleted-list"><li style="list-style-type:disc"><strong>차용할 점</strong>: &quot;열자마자 바로 시작&quot; UX → DeepFlow도 랜딩 = 타이머 화면</li></ul></div><div style="display:contents" dir="auto"><ul id="93abfaa1-f301-437b-8f01-23ff78e1a36b" class="bulleted-list"><li style="list-style-type:disc"><strong>이길 점</strong>: 순수 집중 시간 분석, 연장 추적, 셧다운 리포트</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="b5e5c46e-7788-4cc4-aa6e-87e7d9fe7ced" class="toggle"><li><details open=""><summary>🌳 Forest — 게이미피케이션 벤치마크</summary><div style="display:contents" dir="auto"><ul id="9cc0b28a-43f5-4200-a42a-6aa0005f3695" class="bulleted-list"><li style="list-style-type:disc"><strong>장점</strong>: 나무 성장이라는 강력한 시각적 동기부여, 소셜 기능</li></ul></div><div style="display:contents" dir="auto"><ul id="e0a5ef3c-a92b-4403-b7cd-74140ed2d9e1" class="bulleted-list"><li style="list-style-type:disc"><strong>단점</strong>: 일시정지 = 나무 사망 (유연성 없음), 웹 버전 없음, 시간 분석 부재</li></ul></div><div style="display:contents" dir="auto"><ul id="3eb02ffb-793d-4e91-8652-201d9e414b8b" class="bulleted-list"><li style="list-style-type:disc"><strong>차용할 점</strong>: 게이미피케이션 → DeepFlow의 완주 스트릭 🔥 시스템</li></ul></div><div style="display:contents" dir="auto"><ul id="9419c35a-af45-46ac-adf5-adfa3ade9147" class="bulleted-list"><li style="list-style-type:disc"><strong>이길 점</strong>: 연장 허용, 실질적 시간 분석, 웹 접근성</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="3d26c77d-02cf-4b36-8209-e7c6573d04c8" class="toggle"><li><details open=""><summary>⏱ Toggl Track — 시간 추적 벤치마크</summary><div style="display:contents" dir="auto"><ul id="7facb0a3-e008-401f-a163-dbd2b7f66556" class="bulleted-list"><li style="list-style-type:disc"><strong>장점</strong>: 세계 최고 수준의 시간 추적 + 리포트, 팀 기능</li></ul></div><div style="display:contents" dir="auto"><ul id="3d87aee3-77a9-4f11-bc9a-0c045741e41f" class="bulleted-list"><li style="list-style-type:disc"><strong>단점</strong>: 집중 타이머가 아닌 트래킹 도구, UI 복잡, 유료</li></ul></div><div style="display:contents" dir="auto"><ul id="4d77e307-34f4-4d6c-8d7c-dcff68eea23b" class="bulleted-list"><li style="list-style-type:disc"><strong>차용할 점</strong>: 프로젝트별 시간 비중 시각화 방식</li></ul></div><div style="display:contents" dir="auto"><ul id="a7ed1b78-c55e-4dc7-87bb-64cdc873b5b0" class="bulleted-list"><li style="list-style-type:disc"><strong>이길 점</strong>: 개인 딥워크에 최적화된 단순 UX, 무료, 물 빠지는 바 시각화</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="4ed94b5e-959b-406d-ae9a-95213b0293eb" class="toggle"><li><details open=""><summary>📱 딥포커스 (Android) — 국내 경쟁</summary><div style="display:contents" dir="auto"><ul id="7e80df8c-e1e7-4007-a2fa-220acbfb58a8" class="bulleted-list"><li style="list-style-type:disc"><strong>장점</strong>: 프로젝트별 시간 기록, 몰입 달력, 무료</li></ul></div><div style="display:contents" dir="auto"><ul id="cb7eb39c-d72a-4a0e-81b1-db1508324a44" class="bulleted-list"><li style="list-style-type:disc"><strong>단점</strong>: Android 전용, 웹 버전 없음, 셧다운 리포트 없음</li></ul></div><div style="display:contents" dir="auto"><ul id="7396e74a-c574-4124-9a08-d8dfa84fb0ca" class="bulleted-list"><li style="list-style-type:disc"><strong>차용할 점</strong>: 프로젝트별 기록 UX</li></ul></div><div style="display:contents" dir="auto"><ul id="f43a57d5-dc79-4059-b9c6-829a920e26cf" class="bulleted-list"><li style="list-style-type:disc"><strong>이길 점</strong>: 웹앱으로 플랫폼 무관, 집중도(일시정지) 분석, 노션 연동</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><hr id="821bec49-e24a-410a-98e3-4b364f126ca3"/></div><div style="display:contents" dir="auto"><h2 id="bf82ee51-58df-4cef-9c16-b9211cacaeef" class="">4. 워크플로우 차트</h2></div><div style="display:contents" dir="auto"><h3 id="febfd108-f98c-4cf6-bfe5-6200ebd4f17f" class="">4-1. 메인 사용자 플로우 (Happy Path)</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="34849601-9a6f-4a7b-a43e-d0508f54648c" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">flowchart TD
+    A[&quot;\uD83C\uDFE0 \uB79C\uB529 \uD398\uC774\uC9C0&quot;] --&gt; B{&quot;\uB85C\uADF8\uC778 \uC0C1\uD0DC?&quot;}
+    B --&gt;|&quot;\uBE44\uB85C\uADF8\uC778&quot;| C[&quot;\uB85C\uCEEC \uBAA8\uB4DC\uB85C \uC0AC\uC6A9&quot;]
+    B --&gt;|&quot;\uCE74\uCE74\uC624 \uB85C\uADF8\uC778&quot;| D[&quot;Supabase Auth \uC778\uC99D&quot;]
+    D --&gt; E[&quot;\uC720\uC800 \uB370\uC774\uD130 \uB3D9\uAE30\uD654&quot;]
+    C --&gt; F[&quot;\u23F1 \uD0C0\uC774\uBA38 \uD654\uBA74&quot;]
+    E --&gt; F
+
+    F --&gt; G{&quot;\uC2DC\uAC04 \uC124\uC815 \uBC29\uBC95&quot;}
+    G --&gt;|&quot;\uD504\uB9AC\uC14B&quot;| H[&quot;90\uBD84 / 60\uBD84 / 25\uBD84&quot;]
+    G --&gt;|&quot;\uCEE4\uC2A4\uD140&quot;| I[&quot;\uC2DC/\uBD84/\uCD08 \uC9C1\uC811 \uC785\uB825&quot;]
+    G --&gt;|&quot;\uCD5C\uADFC \uAE30\uB85D&quot;| J[&quot;\uB9C8\uC9C0\uB9C9 \uC138\uD305 \uBD88\uB7EC\uC624\uAE30&quot;]
+
+    H --&gt; K[&quot;\uC791\uC5C5\uBA85 \uC785\uB825 (\uC120\uD0DD)&quot;]
+    I --&gt; K
+    J --&gt; K
+
+    K --&gt; L[&quot;\uD504\uB85C\uC81D\uD2B8 \uD0DC\uADF8 \uC120\uD0DD (\uC120\uD0DD)&quot;]
+    L --&gt; M[&quot;\u25B6\uFE0F START \uBC84\uD2BC&quot;]
+
+    M --&gt; N[&quot;\uD83C\uDF0A \uBB3C \uBE60\uC9C0\uB294 \uB9C9\uB300\uBC14 + \uCD08 \uCE74\uC6B4\uD2B8\uB2E4\uC6B4&quot;]
+
+    N --&gt; O{&quot;\uC0AC\uC6A9\uC790 \uC561\uC158&quot;}
+    O --&gt;|&quot;\uC77C\uC2DC\uC815\uC9C0&quot;| P[&quot;\u23F8 \uC815\uC9C0 (\uC815\uC9C0\uC2DC\uAC04 \uAE30\uB85D)&quot;]
+    P --&gt; Q[&quot;\u25B6 \uC7AC\uAC1C (\uB04A\uAE40 \uD69F\uC218 +1)&quot;]
+    Q --&gt; N
+
+    O --&gt;|&quot;\uD0ED \uC774\uD0C8&quot;| R[&quot;\u26A0\uFE0F \uACBD\uACE0 \uD1A0\uC2A4\uD2B8 + \uC774\uD0C8 \uD69F\uC218 \uAE30\uB85D&quot;]
+    R --&gt; N
+
+    O --&gt;|&quot;\uC2DC\uAC04 \uC885\uB8CC&quot;| S[&quot;\uD83D\uDD14 \uAC15\uC81C \uC54C\uB9BC + \uC9C4\uB3D9&quot;]
+    S --&gt; T{&quot;\uC5F0\uC7A5 \uC5EC\uBD80&quot;}
+    T --&gt;|&quot;\uC5F0\uC7A5&quot;| U[&quot;+5\uBD84/+10\uBD84/\uCEE4\uC2A4\uD140&lt;br&gt;\uC5F0\uC7A5 \uD69F\uC218 +1, \uCD08\uACFC\uC2DC\uAC04 \uBC30\uC9C0&quot;]
+    U --&gt; N
+    T --&gt;|&quot;\uC644\uB8CC&quot;| V[&quot;\u2705 \uC138\uC158 \uC644\uB8CC&quot;]
+    T --&gt;|&quot;\uD3EC\uAE30&quot;| W[&quot;\u274C \uC138\uC158 \uD3EC\uAE30 (\uBBF8\uC644 \uAE30\uB85D)&quot;]
+
+    V --&gt; X{&quot;\uB2E4\uC74C \uC561\uC158&quot;}
+    W --&gt; X
+    X --&gt;|&quot;\uC0C8 \uC138\uC158&quot;| F
+    X --&gt;|&quot;\uC167\uB2E4\uC6B4&quot;| Y[&quot;\uD83D\uDCCB \uB370\uC77C\uB9AC \uB9AC\uD3EC\uD2B8 \uC0DD\uC131&quot;]
+
+    Y --&gt; Z{&quot;\uB0B4\uBCF4\uB0B4\uAE30&quot;}
+    Z --&gt;|&quot;JSON \uBCF5\uC0AC&quot;| AA[&quot;\uD074\uB9BD\uBCF4\uB4DC \uBCF5\uC0AC&quot;]
+    Z --&gt;|&quot;MD \uBCF5\uC0AC&quot;| AB[&quot;\uB178\uC158\uC6A9 \uB9C8\uD06C\uB2E4\uC6B4 \uBCF5\uC0AC&quot;]
+    Z --&gt;|&quot;\uB2EB\uAE30&quot;| AC[&quot;\uD648 \uBCF5\uADC0&quot;]</code></pre></div><div style="display:contents" dir="auto"><h3 id="e2d9af82-b92d-4d44-94f3-e2468fc86f48" class="">4-2. 카카오 로그인 플로우</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="74fd4b0f-d3b9-411f-9e71-f522033c2768" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">sequenceDiagram
+    participant U as 사용자
+    participant App as DeepFlow
+    participant Kakao as 카카오 OAuth
+    participant SB as Supabase Auth
+    participant DB as Supabase DB
+
+    U-&gt;&gt;App: &quot;카카오로 로그인&quot; 클릭
+    App-&gt;&gt;Kakao: OAuth 2.0 인증 요청
+    Kakao-&gt;&gt;U: 카카오 동의 화면
+    U-&gt;&gt;Kakao: 동의 승인
+    Kakao-&gt;&gt;App: Authorization Code
+    App-&gt;&gt;SB: signInWithOAuth(kakao)
+    SB-&gt;&gt;Kakao: Access Token 교환
+    Kakao--&gt;&gt;SB: 유저 정보 (id, nickname, email)
+    SB-&gt;&gt;DB: users 테이블 upsert
+    SB--&gt;&gt;App: Session Token
+    App-&gt;&gt;DB: 로컬 스토리지 데이터 → DB 동기화
+    App--&gt;&gt;U: &quot;환영합니다, OO님&quot; + 타이머 화면</code></pre></div><div style="display:contents" dir="auto"><h3 id="ffee3860-444e-444c-ae78-2164db059336" class="">4-3. 타이머 상태 머신</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b8b90d2-73e1-4772-85d8-69a2d52fbe4c" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">stateDiagram-v2
+    [*] --&gt; Idle: 앱 진입
+    Idle --&gt; Setting: 시간 입력 시작
+    Setting --&gt; Ready: 시간 확정
+    Ready --&gt; Running: START 버튼
+    Running --&gt; Paused: 일시정지
+    Paused --&gt; Running: 재개
+    Running --&gt; TimeUp: 카운트다운 완료
+    TimeUp --&gt; Extending: 연장 선택
+    Extending --&gt; Running: 추가 시간 설정
+    TimeUp --&gt; Completed: 완료 선택
+    TimeUp --&gt; Abandoned: 포기 선택
+    Running --&gt; Abandoned: 중도 포기
+    Paused --&gt; Abandoned: 정지 중 포기
+    Completed --&gt; Report: 리포트 생성
+    Abandoned --&gt; Report: 리포트 생성
+    Report --&gt; Idle: 홈 복귀
+    Report --&gt; Setting: 새 세션</code></pre></div><div style="display:contents" dir="auto"><hr id="2cf6c81f-8196-4c0b-89e5-92685e6ed454"/></div><div style="display:contents" dir="auto"><h2 id="a195876c-1ddd-4eb1-bdd6-76e6f2507f2b" class="">5. 엣지케이스 고려 개선</h2></div><div style="display:contents" dir="auto"><h3 id="3035e6cb-8991-458e-a5ce-8fa161c1f66a" class="">5-1. 타이머 엔진 엣지케이스</h3></div><div style="display:contents" dir="ltr"><table id="ebbd6848-f45a-4b08-9c27-cb07058834de" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="202a82c2-8017-441b-b69b-1a155dba92d7"><th id="LheI" class="simple-table-header-color simple-table-header">ID</th><th id="Strj" class="simple-table-header-color simple-table-header">엣지케이스</th><th id="^En_" class="simple-table-header-color simple-table-header">상황</th><th id="`PTP" class="simple-table-header-color simple-table-header">대응 전략</th><th id="xV&lt;a" class="simple-table-header-color simple-table-header">우선순위</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="3be543c9-7e81-45e5-840a-8279859e4d73"><td id="LheI" class="">EC-01</td><td id="Strj" class=""><strong>브라우저 탭 닫힘</strong></td><td id="^En_" class="">타이머 작동 중 실수로 탭 닫음</td><td id="`PTP" class="">① <code>beforeunload</code> 이벤트로 경고 팝업<br/>② 로컬스토리지에 진행 중 상태 저장 (1초 간격)<br/>③ 재접속 시 &quot;이어서 하시겠습니까?&quot; 복구 배너</td><td id="xV&lt;a" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="8882f541-e3c1-4343-b305-659015aaf6ac"><td id="LheI" class="">EC-02</td><td id="Strj" class=""><strong>장시간 일시정지</strong></td><td id="^En_" class="">30분 이상 정지 후 복귀 안 함</td><td id="`PTP" class="">① 10분 정지 시 푸시 알림 (&quot;돌아오세요&quot;)<br/>② 30분 초과 시 자동 세션 종료 + 미완 처리<br/>③ 사용자 설정에서 자동 종료 시간 조절 가능</td><td id="xV&lt;a" class="">P1</td></tr></div><div style="display:contents" dir="ltr"><tr id="b1e4cc92-1bce-463c-ab00-216d8ee1f8e7"><td id="LheI" class="">EC-03</td><td id="Strj" class=""><strong>0초 입력</strong></td><td id="^En_" class="">사용자가 모든 필드에 0 또는 미입력</td><td id="`PTP" class="">① 최소 1초 이상만 START 활성화<br/>② 입력 시 실시간 환산 초 미리보기 표시</td><td id="xV&lt;a" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="f4dc3da1-249d-46d8-9def-ef346240f2e2"><td id="LheI" class="">EC-04</td><td id="Strj" class=""><strong>초대형 시간 입력</strong></td><td id="^En_" class="">24시간 이상 입력 시도</td><td id="`PTP" class="">① 최대 12시간(43,200초) 제한<br/>② 초과 시 &quot;최대 12시간까지 설정 가능&quot; 안내</td><td id="xV&lt;a" class="">P2</td></tr></div><div style="display:contents" dir="ltr"><tr id="1424683e-e136-4f0b-88c1-46a10bb92668"><td id="LheI" class="">EC-05</td><td id="Strj" class=""><strong>무한 연장 반복</strong></td><td id="^En_" class="">끝나지 않고 연장만 10회 이상</td><td id="`PTP" class="">① 연장 5회 시 &quot;다음엔 시간을 더 여유롭게&quot; 넘지<br/>② 연장 횟수 제한 없음 (데이터는 모두 기록)<br/>③ 리포트에 &quot;오늘 총 연장 N회&quot; 강조 표시</td><td id="xV&lt;a" class="">P1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="da879c19-9f35-43b3-a070-c83ce754b659" class="">5-2. 인증 &amp; 데이터 엣지케이스</h3></div><div style="display:contents" dir="ltr"><table id="c5e9c4a4-5987-4140-8520-d15c432c5720" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="3e5b98ae-c15d-4e6f-abcb-524d4af48bab"><th id="tze{" class="simple-table-header-color simple-table-header">ID</th><th id="qO_v" class="simple-table-header-color simple-table-header">엣지케이스</th><th id="Z=:D" class="simple-table-header-color simple-table-header">상황</th><th id="adV&lt;" class="simple-table-header-color simple-table-header">대응 전략</th><th id="hFJO" class="simple-table-header-color simple-table-header">우선순위</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="af7c745c-7d75-4746-b354-94bcb4e34683"><td id="tze{" class="">EC-06</td><td id="qO_v" class=""><strong>카카오 토큰 만료</strong></td><td id="Z=:D" class="">세션 중에 토큰 재발급 실패</td><td id="adV&lt;" class="">① Supabase의 자동 Refresh Token 활용<br/>② 재인증 실패 시 로컬스토리지 모드로 자동 전환<br/>③ 로그인 복구 시 로컬 데이터 자동 싱크</td><td id="hFJO" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="cc887931-79af-4ed2-9530-b3dc388d20ec"><td id="tze{" class="">EC-07</td><td id="qO_v" class=""><strong>로컬↔DB 충돌</strong></td><td id="Z=:D" class="">비로그인으로 쓴 데이터와 DB 데이터가 다름</td><td id="adV&lt;" class="">① 최초 로그인 시 &quot;기존 데이터 합치기&quot; 모달<br/>② 충돌 시 최신 데이터 우선 + 구데이터 보존<br/>③ 합치 후 로컬 스토리지 초기화</td><td id="hFJO" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="eac1e50a-11c8-440a-a98b-3dbbd8f9c6af"><td id="tze{" class="">EC-08</td><td id="qO_v" class=""><strong>네트워크 끊김</strong></td><td id="Z=:D" class="">오프라인 상태에서 타이머 사용</td><td id="adV&lt;" class="">① 타이머는 클라이언트에서 독립 동작 (<a href="http://Date.now">Date.now</a> 기반)<br/>② 세션 결과를 IndexedDB에 임시 저장<br/>③ 네트워크 복구 시 배치 싱크</td><td id="hFJO" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="da4cea0f-80ac-4205-8f07-2c7624664c30"><td id="tze{" class="">EC-09</td><td id="qO_v" class=""><strong>다중 디바이스 동시 접속</strong></td><td id="Z=:D" class="">PC와 모바일에서 동시 타이머 실행</td><td id="adV&lt;" class="">① 활성 세션은 1개만 허용 (마지막 시작 디바이스 우선)<br/>② 다른 디바이스에서 &quot;다른 기기에서 진행 중&quot; 안내</td><td id="hFJO" class="">P1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="bfd73706-e705-4b26-be72-e94f444da631" class="">5-3. UI/UX 엣지케이스</h3></div><div style="display:contents" dir="ltr"><table id="a7217fb2-b410-4449-951f-1a73e8e0bb48" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="21e4202e-dd1d-4195-a56b-48df5ee2f194"><th id=";JjH" class="simple-table-header-color simple-table-header">ID</th><th id="md[U" class="simple-table-header-color simple-table-header">엣지케이스</th><th id="[o|Y" class="simple-table-header-color simple-table-header">상황</th><th id="AKTA" class="simple-table-header-color simple-table-header">대응 전략</th><th id="h`J\" class="simple-table-header-color simple-table-header">우선순위</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="103a570e-945e-4cdb-8fb1-0c4b8f54d0ec"><td id=";JjH" class="">EC-10</td><td id="md[U" class=""><strong>모바일 화면 잠김</strong></td><td id="[o|Y" class="">iOS/AOS에서 화면 껴지면 타이머 멈춤</td><td id="AKTA" class="">① Wake Lock API 사용 (지원 브라우저)<br/>② 미지원 시 &quot;화면 껴지지 않도록 설정해주세요&quot; 안내<br/>③ 백그라운드에서도 <a href="http://Date.now">Date.now</a> 기반 정확한 시간 계산</td><td id="h`J\" class="">P0</td></tr></div><div style="display:contents" dir="ltr"><tr id="686333fb-d9c5-4e84-b52b-e31db1b4eb2b"><td id=";JjH" class="">EC-11</td><td id="md[U" class=""><strong>프로젝트 10개 초과</strong></td><td id="[o|Y" class="">태그 생성 제한 도달</td><td id="AKTA" class="">① 10개 도달 시 &quot;기존 태그 삭제 후 생성&quot; 안내<br/>② 미사용 태그 아카이브 기능 (추후)</td><td id="h`J\" class="">P2</td></tr></div><div style="display:contents" dir="ltr"><tr id="72518554-8eb0-41a9-b572-dc729e5d6227"><td id=";JjH" class="">EC-12</td><td id="md[U" class=""><strong>막대바 애니메이션 저사양 기기</strong></td><td id="[o|Y" class="">구형 모바일에서 애니메이션 버벡</td><td id="AKTA" class="">① CSS animation 우선, JS fallback<br/>② 저사양 감지 시 간소화 모드 (단색 바 + 숫자만)<br/>③ <code>prefers-reduced-motion</code> 존중</td><td id="h`J\" class="">P1</td></tr></div><div style="display:contents" dir="ltr"><tr id="e6e8a3fa-8345-4f3e-b2ef-2012289436a5"><td id=";JjH" class="">EC-13</td><td id="md[U" class=""><strong>클립보드 복사 실패</strong></td><td id="[o|Y" class="">HTTP(S) 아닌 환경에서 Clipboard API 차단</td><td id="AKTA" class="">① Clipboard API 실패 시 <code>document.execCommand</code> fallback<br/>② 둘 다 실패 시 텍스트 선택 상태로 보여주고 &quot;직접 복사해주세요&quot; 안내</td><td id="h`J\" class="">P1</td></tr></div><div style="display:contents" dir="ltr"><tr id="1f2d452d-be1d-4b74-bda1-3c3197db82ef"><td id=";JjH" class="">EC-14</td><td id="md[U" class=""><strong>자정 넘음 (날짜 경계)</strong></td><td id="[o|Y" class="">23:50에 시작한 세션이 00:10에 끝남</td><td id="AKTA" class="">① 세션은 <strong>시작 날짜</strong> 기준으로 그룹화<br/>② 데일리 리포트 기준시간 = 사용자 설정 (기본 04:00AM)</td><td id="h`J\" class="">P1</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="4ba476b1-7ded-49cc-bf36-7c5badddc08d" class="">5-4. 엣지케이스 요약 매트릭스</h3></div><div style="display:contents" dir="ltr"><table id="02623345-353d-4713-bc8f-b4d5f8e9e409" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="64642207-722a-4a40-9863-0225d5d60287"><th id="CC&lt;o" class="simple-table-header-color simple-table-header">등급</th><th id="eDXY" class="simple-table-header-color simple-table-header">P0 (필수)</th><th id="n\LB" class="simple-table-header-color simple-table-header">P1 (중요)</th><th id="YyjB" class="simple-table-header-color simple-table-header">P2 (후순위)</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="13ba4c1c-ecc6-4bbe-af52-fa120f8b8a65"><td id="CC&lt;o" class=""><strong>건수</strong></td><td id="eDXY" class="">5건 (EC-01,03,06,07,08,10)</td><td id="n\LB" class="">5건 (EC-02,05,09,12,13,14)</td><td id="YyjB" class="">2건 (EC-04,11)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="9ce0b365-dedd-4b03-b211-f819d4e25c1c"/></div><div style="display:contents" dir="auto"><h2 id="e77270bc-a45d-481e-a491-4ccf83a7fba4" class="">6. 기능명세서 (Feature Specification)</h2></div><div style="display:contents" dir="auto"><h3 id="81e4c087-040e-42ab-a109-47b10bba408f" class="">6-1. 화면별 기능 명세</h3></div><div style="display:contents" dir="auto"><h4 id="90742684-618e-4df2-a40a-1c645a6849a1" class="">Screen 1: 타이머 화면 (메인)</h4></div><div style="display:contents" dir="ltr"><table id="8fc120b0-3e94-4686-84df-519b9972ee6a" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="ff8c3bb1-5e33-4e77-ac5f-d7edc8c9b8cd"><th id="kL;h" class="simple-table-header-color simple-table-header">기능 ID</th><th id="UT@F" class="simple-table-header-color simple-table-header">기능명</th><th id="v&gt;I\" class="simple-table-header-color simple-table-header">상세 설명</th><th id="oGLv" class="simple-table-header-color simple-table-header">인터랙션</th><th id="{yzx" class="simple-table-header-color simple-table-header">Phase</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="1dba87e9-6011-4deb-8aa7-a43f84d0a2bb"><td id="kL;h" class="">FS-1.1</td><td id="UT@F" class=""><strong>시간 입력 패널</strong></td><td id="v&gt;I\" class="">시/분/초 3개 입력 필드. 각 필드 숫자 키패드 전용. 입력 시 하단에 &quot;→ 총 5,400초&quot; 실시간 환산 표시</td><td id="oGLv" class="">탭으로 필드 이동, 숫자 입력 즉시 환산</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="250f8918-ba88-4d87-ae54-00c134c91f7f"><td id="kL;h" class="">FS-1.2</td><td id="UT@F" class=""><strong>프리셋 버튼</strong></td><td id="v&gt;I\" class="">[25분] [60분] [90분] 버튼 + [최근 세팅] 버튼. 탭 시 입력 필드 자동 채움</td><td id="oGLv" class="">원터치로 시간 설정 완료</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="4b67e344-991e-49ba-99a3-155348c9bf80"><td id="kL;h" class="">FS-1.3</td><td id="UT@F" class=""><strong>작업명 입력</strong></td><td id="v&gt;I\" class="">placeholder: &quot;무엇에 집중하시나요? (선택)&quot;. 최대 50자. 미입력 시 &quot;이름 없는 세션&quot;</td><td id="oGLv" class="">텍스트 입력, Enter로 바로 시작 가능</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="2848fbcf-8c55-4bc3-b079-1760a69248c1"><td id="kL;h" class="">FS-1.4</td><td id="UT@F" class=""><strong>프로젝트 태그 선택</strong></td><td id="v&gt;I\" class="">색상 도트 + 이름 리스트. 최대 10개. [+ 새 태그] 버튼</td><td id="oGLv" class="">탭으로 선택/해제 토글</td><td id="{yzx" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="bad7c412-55e8-4e9f-a9f2-94c1f212443f"><td id="kL;h" class="">FS-1.5</td><td id="UT@F" class=""><strong>START 버튼</strong></td><td id="v&gt;I\" class="">시간 &gt; 0초일 때만 활성화. 누르면 타이머 시작 + 화면 전환</td><td id="oGLv" class="">풀 사이즈 버튼, 햅틱 피드백</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="70f5d922-b015-4096-8751-c150f6e3b58b"><td id="kL;h" class="">FS-1.6</td><td id="UT@F" class=""><strong>물 빠지는 막대 바</strong></td><td id="v&gt;I\" class="">5~8개 수직 막대가 화면을 채움. 시간 경과에 따라 각 막대 안의 물(파란색)이 위→아래로 줄어듦. CSS <code>clip-path</code>  • <code>requestAnimationFrame</code></td><td id="oGLv" class="">자동 애니메이션 (사용자 조작 없음)</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="e7833851-c177-4b8d-9b0d-fbac15c06423"><td id="kL;h" class="">FS-1.7</td><td id="UT@F" class=""><strong>남은 시간 디스플레이</strong></td><td id="v&gt;I\" class="">화면 정중앙에 남은 초를 <strong>큰 숫자</strong>로 표시 (128px+). 소수점 없이 정수만. 1분 미만 시 빨간색 전환</td><td id="oGLv" class="">실시간 업데이트 (1초 간격 표시, 내부 ms 정밀도)</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="e2853bb7-89b3-4c06-ba50-f90efeafb688"><td id="kL;h" class="">FS-1.8</td><td id="UT@F" class=""><strong>컨트롤 바</strong></td><td id="v&gt;I\" class="">[⏸ 일시정지] [⏹ 포기] 두 버튼. 정지 상태에서는 [▶ 재개] 로 전환</td><td id="oGLv" class="">일시정지: 물 애니메이션 멈춤 + 오버레이 &quot;정지 중&quot;</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="b0fcad87-9095-4428-b682-91e863ff1ed2"><td id="kL;h" class="">FS-1.9</td><td id="UT@F" class=""><strong>연장 횟수 배지</strong></td><td id="v&gt;I\" class="">연장할 때마다 화면 상단에 🔄×N + 초과 시간 표시. 예: &quot;🔄×2 (+12분 30초)&quot;</td><td id="oGLv" class="">연장 시 펄스 애니메이션으로 시선 유도</td><td id="{yzx" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="96f3d505-bcf9-430c-a489-1d581e5ad0c9"><td id="kL;h" class="">FS-1.10</td><td id="UT@F" class=""><strong>시간 종료 모달</strong></td><td id="v&gt;I\" class="">진동 + 사운드 + 전체화면 오버레이. &quot;⏰ 시간 종료!&quot; + [✅ 완료] [+5분] [+10분] [커스텀 연장] [❌ 포기]</td><td id="oGLv" class="">5초간 자동 반복 진동, 탭으로 선택</td><td id="{yzx" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="e67fde05-e809-4ea4-b054-f1ac97b6bfda"><td id="kL;h" class="">FS-1.11</td><td id="UT@F" class=""><strong>탭 이탈 경고</strong></td><td id="v&gt;I\" class="">Page Visibility API로 탭 전환 감지. 복귀 시 토스트: &quot;⚠️ 집중이 끊겼어요 (이탈 N회)&quot;</td><td id="oGLv" class="">토스트 3초 후 자동 사라짐</td><td id="{yzx" class="">v0.3</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="8add4a15-010d-42b9-8549-461cc740226c" class="">Screen 2: 셧다운 리포트</h4></div><div style="display:contents" dir="ltr"><table id="2efb70b1-3c8d-414b-af14-74f689f2f637" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="f0ab9e1f-6435-4a5f-9678-18f13f68bafc"><th id="R;g[" class="simple-table-header-color simple-table-header">기능 ID</th><th id="pboD" class="simple-table-header-color simple-table-header">기능명</th><th id="Ayid" class="simple-table-header-color simple-table-header">상세 설명</th><th id="]wfL" class="simple-table-header-color simple-table-header">Phase</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="7fc85c09-3ff7-402a-a698-6234496e1aac"><td id="R;g[" class="">FS-2.1</td><td id="pboD" class=""><strong>데일리 서머리 카드</strong></td><td id="Ayid" class="">오늘 총 집중시간 ○h ○m · 연장 ○회 · 완수율 ○% · 스트릭 🔥N일</td><td id="]wfL" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="a5bcafdd-6dc7-4a84-837b-429dbf3dd3a5"><td id="R;g[" class="">FS-2.2</td><td id="pboD" class=""><strong>세션 리스트</strong></td><td id="Ayid" class="">완수 ✅ / 초과 🔄 / 미완 ❌ 아이콘 + 작업명 + 순수 집중시간 + 끊김 횟수</td><td id="]wfL" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="afda4018-7a34-4627-a5cf-4addca7fe39d"><td id="R;g[" class="">FS-2.3</td><td id="pboD" class=""><strong>집중도 비교 바 차트</strong></td><td id="Ayid" class="">오늘 세션별 수평 바 차트. 바 길이 = 순수집중률(%), 색상 = 프로젝트 태그</td><td id="]wfL" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="f720860f-b2db-428e-8cb5-b6a94a1513e8"><td id="R;g[" class="">FS-2.4</td><td id="pboD" class=""><strong>프로젝트 시간 비중 도넛</strong></td><td id="Ayid" class="">프로젝트별 시간 비중 도넛 차트 + 범례</td><td id="]wfL" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="a58d7150-c879-4d7e-b4b9-9f8003cefaf4"><td id="R;g[" class="">FS-2.5</td><td id="pboD" class=""><strong>내보내기 버튼 그룹</strong></td><td id="Ayid" class="">[📋 JSON 복사] [📝 노션 MD 복사] 두 버튼. 복사 성공 시 &quot;✅ 복사 완료&quot; 토스트</td><td id="]wfL" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="617ab0d8-c1ea-4190-99ed-bc4c23948c43"><td id="R;g[" class="">FS-2.6</td><td id="pboD" class=""><strong>베스트 블록 하이라이트</strong></td><td id="Ayid" class="">&quot;오늘 가장 집중도 높았던 블록&quot; 자동 선정 + 금색 테두리 + 🏆 아이콘</td><td id="]wfL" class="">v0.3</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="6e72d76a-ee16-4941-9b81-dc7d55bd8f40" class="">Screen 3: 통계 대시보드</h4></div><div style="display:contents" dir="ltr"><table id="9cb18098-4898-4596-a839-b20d2b74f4a6" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="b1fa17b5-df3a-4a8c-aba6-e843fdd445f6"><th id="&lt;r:Q" class="simple-table-header-color simple-table-header">기능 ID</th><th id="RV\?" class="simple-table-header-color simple-table-header">기능명</th><th id="iI]n" class="simple-table-header-color simple-table-header">상세 설명</th><th id="dkW;" class="simple-table-header-color simple-table-header">Phase</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="6856767f-06dd-418b-be49-8093abaf10dd"><td id="&lt;r:Q" class="">FS-3.1</td><td id="RV\?" class=""><strong>주간 집중시간 라인 차트</strong></td><td id="iI]n" class="">최근 7일간 일별 총 집중시간 추이</td><td id="dkW;" class="">v0.3</td></tr></div><div style="display:contents" dir="ltr"><tr id="0a818faa-274e-4358-99c6-243a4b93af86"><td id="&lt;r:Q" class="">FS-3.2</td><td id="RV\?" class=""><strong>주간 프로젝트 비중 스택 바</strong></td><td id="iI]n" class="">일별 프로젝트 시간 비중 누적 바 차트</td><td id="dkW;" class="">v0.3</td></tr></div><div style="display:contents" dir="ltr"><tr id="ab5c0180-9b02-45c9-bd87-bfa5c897c1d6"><td id="&lt;r:Q" class="">FS-3.3</td><td id="RV\?" class=""><strong>스트릭 캘린더</strong></td><td id="iI]n" class="">GitHub 잔디처럼 일별 집중도 히트맵. 완주 스트릭은 🔥 표시</td><td id="dkW;" class="">v0.3</td></tr></div><div style="display:contents" dir="ltr"><tr id="91db8e10-4404-44e6-831d-cea374ad6f1a"><td id="&lt;r:Q" class="">FS-3.4</td><td id="RV\?" class=""><strong>이월 작업 경고 리스트</strong></td><td id="iI]n" class="">3일 이상 연속 미완인 작업명 리스트 + &quot;만성 미루기&quot; 라벨</td><td id="dkW;" class="">v1.0</td></tr></div><div style="display:contents" dir="ltr"><tr id="3e6e2d8f-620e-4ab4-9989-4649ede4dc36"><td id="&lt;r:Q" class="">FS-3.5</td><td id="RV\?" class=""><strong>주간 목표 정렬도</strong></td><td id="iI]n" class="">&quot;이번 주 시간의 N%가 장기 목표 A에 사용됨&quot; 파이 차트</td><td id="dkW;" class="">v1.0</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="a4c41a95-672b-4f7b-97cf-0ac0160808ba" class="">Screen 4: 설정</h4></div><div style="display:contents" dir="ltr"><table id="766ff3ce-8cac-4121-b28d-83ebb76d1e03" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2f7b8700-3cc5-4246-938a-85bcdf005111"><th id="SwuN" class="simple-table-header-color simple-table-header">기능 ID</th><th id="?tx_" class="simple-table-header-color simple-table-header">기능명</th><th id="vTH`" class="simple-table-header-color simple-table-header">상세 설명</th><th id="|l{E" class="simple-table-header-color simple-table-header">Phase</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="65eb9fe9-0c89-4426-8829-8f0f627ded87"><td id="SwuN" class="">FS-4.1</td><td id="?tx_" class=""><strong>카카오 로그인/로그아웃</strong></td><td id="vTH`" class="">로그인 상태 표시 + 로그아웃 버튼. 프로필 이미지 + 닉네임</td><td id="|l{E" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="93b91616-823b-4155-9391-b43ea89114ed"><td id="SwuN" class="">FS-4.2</td><td id="?tx_" class=""><strong>프로젝트 태그 관리</strong></td><td id="vTH`" class="">태그 추가/수정/삭제/색상 변경. 최대 10개 제한</td><td id="|l{E" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="70e06ee4-fbe2-46c0-a686-25f93c63efc9"><td id="SwuN" class="">FS-4.3</td><td id="?tx_" class=""><strong>자동 정지 종료 시간</strong></td><td id="vTH`" class="">장시간 일시정지 후 자동 종료까지의 시간 설정 (기본 30분)</td><td id="|l{E" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="0c0a6612-1776-45d4-872b-34f04817f61c"><td id="SwuN" class="">FS-4.4</td><td id="?tx_" class=""><strong>데일리 기준 시간</strong></td><td id="vTH`" class="">하루 리셋 기준 시간 설정 (기본 04:00 AM)</td><td id="|l{E" class="">v0.2</td></tr></div><div style="display:contents" dir="ltr"><tr id="84bd0dfd-b62b-4ae3-bb91-96e0d13b0830"><td id="SwuN" class="">FS-4.5</td><td id="?tx_" class=""><strong>장기 목표 관리</strong></td><td id="vTH`" class="">목표 추가/수정/삭제. 프로젝트 태그와 연결</td><td id="|l{E" class="">v1.0</td></tr></div><div style="display:contents" dir="ltr"><tr id="1c245e4f-61fd-4cab-8960-208fb0368573"><td id="SwuN" class="">FS-4.6</td><td id="?tx_" class=""><strong>알림 설정</strong></td><td id="vTH`" class="">종료 알림 사운드 선택, 진동 on/off, 탭 이탈 경고 on/off</td><td id="|l{E" class="">MVP</td></tr></div><div style="display:contents" dir="ltr"><tr id="9e4453c3-4fe2-443a-8eaa-283ea98474fa"><td id="SwuN" class="">FS-4.7</td><td id="?tx_" class=""><strong>데이터 관리</strong></td><td id="vTH`" class="">전체 데이터 JSON 내보내기 / 계정 삭제</td><td id="|l{E" class="">v0.3</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="4d5601f6-86b6-48a5-ab3e-ad0368dfce73" class="">6-2. 내보내기 포맷 상세</h3></div><div style="display:contents" dir="auto"><ul id="67bd6e5f-69f6-44b6-833b-e18e5378237a" class="toggle"><li><details open=""><summary>📋 JSON 내보내기 포맷</summary><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e00ecc61-19a1-4fd1-922d-dfd63104a545" class="code code-wrap"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;date&quot;: &quot;2026-04-10&quot;,
+  &quot;summary&quot;: {
+    &quot;totalFocusTime&quot;: 12450,
+    &quot;totalSessions&quot;: 5,
+    &quot;completedSessions&quot;: 3,
+    &quot;abandonedSessions&quot;: 1,
+    &quot;overtimeSessions&quot;: 1,
+    &quot;totalExtensions&quot;: 4,
+    &quot;completionRate&quot;: 60,
+    &quot;streak&quot;: 7
+  },
+  &quot;sessions&quot;: [
+    {
+      &quot;taskName&quot;: &quot;토스 지원서 작성&quot;,
+      &quot;project&quot;: &quot;취업준비&quot;,
+      &quot;plannedSeconds&quot;: 5400,
+      &quot;actualSeconds&quot;: 6300,
+      &quot;focusSeconds&quot;: 5850,
+      &quot;pauseSeconds&quot;: 450,
+      &quot;pauseCount&quot;: 3,
+      &quot;extensionCount&quot;: 2,
+      &quot;tabLeaveCount&quot;: 1,
+      &quot;status&quot;: &quot;completed_overtime&quot;,
+      &quot;startedAt&quot;: &quot;2026-04-10T09:30:00+09:00&quot;,
+      &quot;endedAt&quot;: &quot;2026-04-10T11:15:00+09:00&quot;
+    }
+  ]
+}</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="64a409b8-b232-49ce-8d12-375529b8d86e" class="toggle"><li><details open=""><summary>📝 노션 마크다운 내보내기 포맷</summary><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="557b9fa8-46de-4b0a-83b3-526dac763c4e" class="code code-wrap"><code class="language-Markdown" style="white-space:pre-wrap;word-break:break-all">## 📊 DeepFlow 데일리 리포트 — 2026.04.10
+
+**총 집중시간** 3시간 27분 · **연장** 4회 · **완수율** 60% · **스트릭** 🔥7일
+
+### ✅ 완수한 작업
+- 토스 지원서 작성 [취업준비] — 97분 집중 (끊김 3회)
+- 포트폴리오 UI 수정 [포트폴리오] — 58분 집중 (끊김 0회) 🏆
+- 영어 회화 연습 [자기계발] — 24분 집중 (끊김 1회)
+
+### 🔄 초과 완수
+- 토스 지원서 작성 — 계획 90분 → 실제 105분 (+15분, 연장 2회)
+
+### ❌ 미완
+- 코딩 테스트 문제풀이 [취업준비] — 15분 후 포기</code></pre></div></details></li></ul></div><div style="display:contents" dir="auto"><hr id="13208bf9-c603-4be9-9ed4-051b3fae9a37"/></div><div style="display:contents" dir="auto"><h2 id="5736fd02-27b7-45f4-8bc6-c7e02a659756" class="">7. IA (Information Architecture)</h2></div><div style="display:contents" dir="auto"><h3 id="bdd7556e-3921-4dc8-8450-62571b115c68" class="">7-1. 사이트맵</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="014225a7-e9fe-4e44-8b27-dd6e8c1ef425" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">flowchart TD
+    ROOT[&quot;🏠 DeepFlow&quot;] --&gt; TIMER[&quot;⏱ 타이머 (/)&quot;]
+    ROOT --&gt; REPORT[&quot;📋 셧다운 리포트 (/report)&quot;]
+    ROOT --&gt; STATS[&quot;📊 통계 (/stats)&quot;]
+    ROOT --&gt; SETTINGS[&quot;⚙️ 설정 (/settings)&quot;]
+    ROOT --&gt; AUTH[&quot;🔐 인증 (/auth)&quot;]
+
+    TIMER --&gt; T1[&quot;시간 입력 패널&quot;]
+    TIMER --&gt; T2[&quot;프리셋 버튼&quot;]
+    TIMER --&gt; T3[&quot;작업명 입력&quot;]
+    TIMER --&gt; T4[&quot;프로젝트 태그 선택&quot;]
+    TIMER --&gt; T5[&quot;카운트다운 화면&quot;]
+    T5 --&gt; T5a[&quot;물 빠지는 막대 바&quot;]
+    T5 --&gt; T5b[&quot;남은 시간 디스플레이&quot;]
+    T5 --&gt; T5c[&quot;컨트롤 바&quot;]
+    T5 --&gt; T5d[&quot;연장 배지&quot;]
+    T5 --&gt; T5e[&quot;시간 종료 모달&quot;]
+
+    REPORT --&gt; R1[&quot;데일리 서머리 카드&quot;]
+    REPORT --&gt; R2[&quot;세션 리스트&quot;]
+    REPORT --&gt; R3[&quot;집중도 비교 차트&quot;]
+    REPORT --&gt; R4[&quot;프로젝트 도넛 차트&quot;]
+    REPORT --&gt; R5[&quot;내보내기 버튼&quot;]
+
+    STATS --&gt; S1[&quot;주간 집중시간 차트&quot;]
+    STATS --&gt; S2[&quot;프로젝트 비중 차트&quot;]
+    STATS --&gt; S3[&quot;스트릭 캘린더&quot;]
+    STATS --&gt; S4[&quot;이월 작업 경고&quot;]
+    STATS --&gt; S5[&quot;목표 정렬도&quot;]
+
+    SETTINGS --&gt; SET1[&quot;프로필 (카카오)&quot;]
+    SETTINGS --&gt; SET2[&quot;프로젝트 태그 관리&quot;]
+    SETTINGS --&gt; SET3[&quot;장기 목표 관리&quot;]
+    SETTINGS --&gt; SET4[&quot;알림 설정&quot;]
+    SETTINGS --&gt; SET5[&quot;데일리 기준 시간&quot;]
+    SETTINGS --&gt; SET6[&quot;데이터 관리&quot;]
+
+    AUTH --&gt; A1[&quot;카카오 로그인&quot;]
+    AUTH --&gt; A2[&quot;/auth/callback&quot;]</code></pre></div><div style="display:contents" dir="auto"><h3 id="d9e9f795-6d42-4d41-848b-a0991c6ae459" class="">7-2. 네비게이션 구조</h3></div><div style="display:contents" dir="ltr"><table id="e0ff69ca-6415-4393-b702-2c5594615b13" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="acece425-8c28-420a-a77d-6777cff2cf35"><th id="lFAs" class="simple-table-header-color simple-table-header">위치</th><th id="kIeA" class="simple-table-header-color simple-table-header">구성 요소</th><th id="]?@;" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="72914623-0f33-473b-ac94-3a58e8ffca06"><td id="lFAs" class=""><strong>하단 탭바</strong> (모바일)</td><td id="kIeA" class="">⏱ 타이머 · 📋 리포트 · 📊 통계 · ⚙️ 설정</td><td id="]?@;" class="">고정 하단 네비게이션. 타이머 작동 중에는 타이머 탭 강조</td></tr></div><div style="display:contents" dir="ltr"><tr id="c88793ff-f4c1-4242-ba53-960655177e2c"><td id="lFAs" class=""><strong>사이드바</strong> (데스크톱)</td><td id="kIeA" class="">동일 4개 메뉴 + 프로필 영역</td><td id="]?@;" class="">좌측 사이드바, 접기/펼치기 가능</td></tr></div><div style="display:contents" dir="ltr"><tr id="2e58087f-4293-4957-97f5-f6137d3fcb5b"><td id="lFAs" class=""><strong>상단 바</strong></td><td id="kIeA" class="">로고 + 스트릭 🔥N + 프로필 아이콘</td><td id="]?@;" class="">항상 노출. 타이머 작동 중에는 남은 시간 소형 표시</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="24980888-229b-4219-a607-2e57e54513bc" class="">7-3. URL 라우팅 (Next.js App Router)</h3></div><div style="display:contents" dir="ltr"><table id="a0c4a0a6-1957-4196-87cd-a088e3f19570" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="e23e6afc-25c7-4b4b-a758-8fd9f6893752"><th id="bJhs" class="simple-table-header-color simple-table-header">경로</th><th id="@HRj" class="simple-table-header-color simple-table-header">화면</th><th id="dcAJ" class="simple-table-header-color simple-table-header">접근 제한</th><th id="\@||" class="simple-table-header-color simple-table-header">메모</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="76408fef-34e2-408c-a4b9-3bf5c3434444"><td id="bJhs" class=""><code>/</code></td><td id="@HRj" class="">타이머 메인</td><td id="dcAJ" class="">없음 (비로그인 가능)</td><td id="\@||" class="">랜딩 = 타이머. 별도 랜딩 페이지 없음</td></tr></div><div style="display:contents" dir="ltr"><tr id="9685d980-b94a-4731-8daf-7806c414f479"><td id="bJhs" class=""><code>/report</code></td><td id="@HRj" class="">셧다운 리포트</td><td id="dcAJ" class="">없음</td><td id="\@||" class="">오늘 세션이 없으면 빈 상태 안내</td></tr></div><div style="display:contents" dir="ltr"><tr id="b2c9b822-b1a4-4336-87f8-031778fdb337"><td id="bJhs" class=""><code>/report/[date]</code></td><td id="@HRj" class="">특정 날짜 리포트</td><td id="dcAJ" class="">로그인 필요</td><td id="\@||" class="">과거 리포트 열람</td></tr></div><div style="display:contents" dir="ltr"><tr id="91b581a8-c6e7-4993-92d5-5dd7a101f351"><td id="bJhs" class=""><code>/stats</code></td><td id="@HRj" class="">통계 대시보드</td><td id="dcAJ" class="">로그인 필요</td><td id="\@||" class="">비로그인 시 로그인 유도</td></tr></div><div style="display:contents" dir="ltr"><tr id="7a5c75ca-a47b-479a-9fc1-386cc4107a59"><td id="bJhs" class=""><code>/settings</code></td><td id="@HRj" class="">설정</td><td id="dcAJ" class="">없음</td><td id="\@||" class="">비로그인 시 일부 항목 비활성</td></tr></div><div style="display:contents" dir="ltr"><tr id="190904ec-0c4a-44c9-8133-eb59e888c7f5"><td id="bJhs" class=""><code>/auth/callback</code></td><td id="@HRj" class="">카카오 OAuth 콜백</td><td id="dcAJ" class="">-</td><td id="\@||" class="">인증 후 / 로 리다이렉트</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="440e97c5-c8c2-446f-b27d-e998f4e75c8b" class="">7-4. 컴포넌트 트리 (주요)</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b070d724-e3c1-4e73-97be-1646b7ceed11" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">flowchart TD
+    APP[&quot;RootLayout&quot;] --&gt; NAV[&quot;NavigationBar&quot;]
+    APP --&gt; MAIN[&quot;Page Content&quot;]
+    APP --&gt; TOAST[&quot;ToastProvider&quot;]
+    APP --&gt; AUTH_P[&quot;AuthProvider&quot;]
+
+    MAIN --&gt; TIMER_P[&quot;TimerPage&quot;]
+    TIMER_P --&gt; TIME_INPUT[&quot;TimeInputPanel&quot;]
+    TIMER_P --&gt; PRESET[&quot;PresetButtons&quot;]
+    TIMER_P --&gt; TASK[&quot;TaskNameInput&quot;]
+    TIMER_P --&gt; TAG[&quot;ProjectTagSelector&quot;]
+    TIMER_P --&gt; START[&quot;StartButton&quot;]
+    TIMER_P --&gt; COUNTDOWN[&quot;CountdownView&quot;]
+    COUNTDOWN --&gt; WATER_BAR[&quot;WaterBar&quot;]
+    COUNTDOWN --&gt; TIME_DISPLAY[&quot;TimeDisplay&quot;]
+    COUNTDOWN --&gt; CONTROLS[&quot;ControlBar&quot;]
+    COUNTDOWN --&gt; EXT_BADGE[&quot;ExtensionBadge&quot;]
+    COUNTDOWN --&gt; END_MODAL[&quot;TimeUpModal&quot;]
+
+    MAIN --&gt; REPORT_P[&quot;ReportPage&quot;]
+    REPORT_P --&gt; SUMMARY[&quot;DailySummaryCard&quot;]
+    REPORT_P --&gt; SESSION_LIST[&quot;SessionList&quot;]
+    REPORT_P --&gt; FOCUS_CHART[&quot;FocusComparisonChart&quot;]
+    REPORT_P --&gt; DONUT[&quot;ProjectDonutChart&quot;]
+    REPORT_P --&gt; EXPORT[&quot;ExportButtons&quot;]
+
+    MAIN --&gt; STATS_P[&quot;StatsPage&quot;]
+    STATS_P --&gt; WEEKLY_LINE[&quot;WeeklyLineChart&quot;]
+    STATS_P --&gt; STREAK_CAL[&quot;StreakCalendar&quot;]
+    STATS_P --&gt; GOAL_PIE[&quot;GoalAlignmentPie&quot;]</code></pre></div><div style="display:contents" dir="auto"><hr id="5a373ea1-af8d-45a8-964c-7103e41c0a09"/></div><div style="display:contents" dir="auto"><h2 id="3333742f-5e4b-44f7-8730-65eae16dfba9" class="">8. ERD (Entity Relationship Diagram)</h2></div><div style="display:contents" dir="auto"><h3 id="fee728f0-bc2c-4611-9936-52e5a079d9f4" class="">8-1. ER 다이어그램</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bc73c04-febd-4497-a3fe-6755695ac755" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">erDiagram
+    USERS ||--o{ SESSIONS : &quot;has many&quot;
+    USERS ||--o{ PROJECTS : &quot;has many&quot;
+    USERS ||--o{ GOALS : &quot;has many&quot;
+    USERS ||--o{ SETTINGS : &quot;has one&quot;
+    PROJECTS ||--o{ SESSIONS : &quot;tagged in&quot;
+    GOALS ||--o{ GOAL_PROJECT_MAP : &quot;maps to&quot;
+    PROJECTS ||--o{ GOAL_PROJECT_MAP : &quot;maps to&quot;
+    SESSIONS ||--o{ PAUSE_EVENTS : &quot;has many&quot;
+    SESSIONS ||--o{ TAB_LEAVE_EVENTS : &quot;has many&quot;
+    SESSIONS ||--o{ EXTENSION_EVENTS : &quot;has many&quot;
+
+    USERS {
+        uuid id PK
+        text kakao_id UK
+        text nickname
+        text email
+        text avatar_url
+        int current_streak
+        int best_streak
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    PROJECTS {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text color
+        boolean is_archived
+        int sort_order
+        timestamptz created_at
+    }
+
+    GOALS {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text description
+        boolean is_active
+        timestamptz created_at
+    }
+
+    GOAL_PROJECT_MAP {
+        uuid id PK
+        uuid goal_id FK
+        uuid project_id FK
+    }
+
+    SESSIONS {
+        uuid id PK
+        uuid user_id FK
+        uuid project_id FK
+        text task_name
+        text status
+        int planned_seconds
+        int actual_seconds
+        int focus_seconds
+        int pause_seconds
+        int pause_count
+        int extension_count
+        int total_extension_seconds
+        int tab_leave_count
+        boolean is_streak_valid
+        timestamptz started_at
+        timestamptz ended_at
+        date session_date
+    }
+
+    PAUSE_EVENTS {
+        uuid id PK
+        uuid session_id FK
+        timestamptz paused_at
+        timestamptz resumed_at
+        int duration_seconds
+    }
+
+    EXTENSION_EVENTS {
+        uuid id PK
+        uuid session_id FK
+        int added_seconds
+        timestamptz extended_at
+    }
+
+    TAB_LEAVE_EVENTS {
+        uuid id PK
+        uuid session_id FK
+        timestamptz left_at
+        timestamptz returned_at
+        int duration_seconds
+    }
+
+    SETTINGS {
+        uuid id PK
+        uuid user_id FK
+        int auto_stop_minutes
+        text day_reset_time
+        boolean vibration_enabled
+        boolean tab_leave_alert
+        text alarm_sound
+        timestamptz updated_at
+    }</code></pre></div><div style="display:contents" dir="auto"><h3 id="fed3534b-49f3-4496-833e-cad17db6a7e9" class="">8-2. 테이블 상세 명세</h3></div><div style="display:contents" dir="auto"><h4 id="f5a3f2fe-dba1-41e0-9b55-0d313f9d3a7b" class=""><code>users</code> — 사용자</h4></div><div style="display:contents" dir="ltr"><table id="94cf4264-a91a-460f-9998-f51854f448bb" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="1c5eeebb-c606-4fb2-ae7b-3abc3dfdfb2f"><th id="rtgH" class="simple-table-header-color simple-table-header">컬럼</th><th id="bqHQ" class="simple-table-header-color simple-table-header">타입</th><th id="i&lt;g]" class="simple-table-header-color simple-table-header">제약</th><th id="=:K}" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="687e5274-8556-4a86-bc4e-1cb6cf89957d"><td id="rtgH" class=""><code>id</code></td><td id="bqHQ" class="">uuid</td><td id="i&lt;g]" class="">PK, default gen_random_uuid()</td><td id="=:K}" class="">Supabase Auth UID와 동일</td></tr></div><div style="display:contents" dir="ltr"><tr id="37a0065e-4121-4552-819e-0cc632a1d746"><td id="rtgH" class=""><code>kakao_id</code></td><td id="bqHQ" class="">text</td><td id="i&lt;g]" class="">UNIQUE, NOT NULL</td><td id="=:K}" class="">카카오 유저 고유 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="8ec4bebf-a79c-46ba-a126-0d331635072e"><td id="rtgH" class=""><code>nickname</code></td><td id="bqHQ" class="">text</td><td id="i&lt;g]" class=""></td><td id="=:K}" class="">카카오 닉네임</td></tr></div><div style="display:contents" dir="ltr"><tr id="bda8b2ef-32b1-41ac-90c1-f65e9e4bda45"><td id="rtgH" class=""><code>email</code></td><td id="bqHQ" class="">text</td><td id="i&lt;g]" class=""></td><td id="=:K}" class="">카카오 이메일 (선택 동의)</td></tr></div><div style="display:contents" dir="ltr"><tr id="0d22d865-593c-4130-a33b-a08c59412202"><td id="rtgH" class=""><code>avatar_url</code></td><td id="bqHQ" class="">text</td><td id="i&lt;g]" class=""></td><td id="=:K}" class="">프로필 이미지 URL</td></tr></div><div style="display:contents" dir="ltr"><tr id="7ea86869-d55d-44b1-88bb-8e288df34451"><td id="rtgH" class=""><code>current_streak</code></td><td id="bqHQ" class="">int</td><td id="i&lt;g]" class="">default 0</td><td id="=:K}" class="">현재 연속 스트릭 일수</td></tr></div><div style="display:contents" dir="ltr"><tr id="e1f20c1b-6524-43ba-8463-1d879c3335f5"><td id="rtgH" class=""><code>best_streak</code></td><td id="bqHQ" class="">int</td><td id="i&lt;g]" class="">default 0</td><td id="=:K}" class="">최고 연속 스트릭 기록</td></tr></div><div style="display:contents" dir="ltr"><tr id="057695b0-1ed8-44d4-bb98-5fb88a6dcfb5"><td id="rtgH" class=""><code>created_at</code></td><td id="bqHQ" class="">timestamptz</td><td id="i&lt;g]" class="">default now()</td><td id="=:K}" class="">가입일</td></tr></div><div style="display:contents" dir="ltr"><tr id="1ec4f146-e233-4380-aa06-91f60ebf449e"><td id="rtgH" class=""><code>updated_at</code></td><td id="bqHQ" class="">timestamptz</td><td id="i&lt;g]" class="">default now()</td><td id="=:K}" class="">최종 수정일</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="a15cb4de-ef3b-4907-ab44-87aab10a7f2c" class=""><code>sessions</code> — 타이머 세션 (핵심 테이블)</h4></div><div style="display:contents" dir="ltr"><table id="f65c04d5-40c1-46e9-bee2-fef5414e7a1b" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="a674f31c-1b8a-4a17-946e-cbea321b21e3"><th id="JS?k" class="simple-table-header-color simple-table-header">컬럼</th><th id="&lt;PmW" class="simple-table-header-color simple-table-header">타입</th><th id="@MR`" class="simple-table-header-color simple-table-header">제약</th><th id="F?cC" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="0a8ec603-cc08-479a-ba4a-d1e8f8ec20a6"><td id="JS?k" class=""><code>id</code></td><td id="&lt;PmW" class="">uuid</td><td id="@MR`" class="">PK</td><td id="F?cC" class="">세션 고유 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="5c69fc08-6d55-4d1c-a485-34cbf32ee0e1"><td id="JS?k" class=""><code>user_id</code></td><td id="&lt;PmW" class="">uuid</td><td id="@MR`" class="">FK → <a href="http://users.id">users.id</a>, NOT NULL</td><td id="F?cC" class="">사용자</td></tr></div><div style="display:contents" dir="ltr"><tr id="5550e599-3e6b-4c07-b6aa-423e5abf7a76"><td id="JS?k" class=""><code>project_id</code></td><td id="&lt;PmW" class="">uuid</td><td id="@MR`" class="">FK → <a href="http://projects.id">projects.id</a>, NULLABLE</td><td id="F?cC" class="">프로젝트 태그 (선택)</td></tr></div><div style="display:contents" dir="ltr"><tr id="b8a98c9e-243c-4438-8ea1-ce2d28b4f728"><td id="JS?k" class=""><code>task_name</code></td><td id="&lt;PmW" class="">text</td><td id="@MR`" class="">default &#x27;이름 없는 세션&#x27;</td><td id="F?cC" class="">작업명 (선택 입력)</td></tr></div><div style="display:contents" dir="ltr"><tr id="1a0e3dce-2208-4a0e-8336-e6656635ac55"><td id="JS?k" class=""><code>status</code></td><td id="&lt;PmW" class="">text</td><td id="@MR`" class="">CHECK IN (&#x27;completed&#x27;, &#x27;completed_overtime&#x27;, &#x27;abandoned&#x27;)</td><td id="F?cC" class="">완수 / 초과완수 / 포기</td></tr></div><div style="display:contents" dir="ltr"><tr id="7ef04a64-7ba5-4335-95af-efd6178b9c8d"><td id="JS?k" class=""><code>planned_seconds</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">NOT NULL, CHECK &gt; 0</td><td id="F?cC" class="">최초 설정 시간 (초)</td></tr></div><div style="display:contents" dir="ltr"><tr id="9dc7f449-9a2e-4ebd-bcf4-b159b4e8a2ea"><td id="JS?k" class=""><code>actual_seconds</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">NOT NULL</td><td id="F?cC" class="">실제 경과 시간 (초) = 집중 + 정지</td></tr></div><div style="display:contents" dir="ltr"><tr id="864354e0-86b1-48b1-ad15-aebb124138a1"><td id="JS?k" class=""><code>focus_seconds</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">NOT NULL</td><td id="F?cC" class=""><strong>순수 집중 시간</strong> (초) = actual − pause</td></tr></div><div style="display:contents" dir="ltr"><tr id="8e682aee-d810-47e8-ac65-cae4567bf2e5"><td id="JS?k" class=""><code>pause_seconds</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">default 0</td><td id="F?cC" class="">총 일시정지 시간 (초)</td></tr></div><div style="display:contents" dir="ltr"><tr id="6ffc595f-50a5-4278-b833-89acbe122e7b"><td id="JS?k" class=""><code>pause_count</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">default 0</td><td id="F?cC" class="">일시정지 횟수 = 끊김 횟수</td></tr></div><div style="display:contents" dir="ltr"><tr id="47238afd-0137-402f-82b9-2e5d98da3980"><td id="JS?k" class=""><code>extension_count</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">default 0</td><td id="F?cC" class="">연장 횟수</td></tr></div><div style="display:contents" dir="ltr"><tr id="342d2036-52d0-4102-8a52-e2114fcb9dcf"><td id="JS?k" class=""><code>total_extension_seconds</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">default 0</td><td id="F?cC" class="">총 연장 시간 (초)</td></tr></div><div style="display:contents" dir="ltr"><tr id="c2301fcd-56a9-45c2-a177-a7c575984b4e"><td id="JS?k" class=""><code>tab_leave_count</code></td><td id="&lt;PmW" class="">int</td><td id="@MR`" class="">default 0</td><td id="F?cC" class="">탭 이탈 횟수</td></tr></div><div style="display:contents" dir="ltr"><tr id="86cd07ff-89d6-4114-aa3e-d95857b44e73"><td id="JS?k" class=""><code>is_streak_valid</code></td><td id="&lt;PmW" class="">boolean</td><td id="@MR`" class="">default false</td><td id="F?cC" class="">이탈 없이 완주 → 스트릭 카운트 대상</td></tr></div><div style="display:contents" dir="ltr"><tr id="691edbb0-3b3c-4591-90d3-ebfdca4b4bce"><td id="JS?k" class=""><code>started_at</code></td><td id="&lt;PmW" class="">timestamptz</td><td id="@MR`" class="">NOT NULL</td><td id="F?cC" class="">세션 시작 시각</td></tr></div><div style="display:contents" dir="ltr"><tr id="f0d41599-9b3a-4f3f-a418-97d060355208"><td id="JS?k" class=""><code>ended_at</code></td><td id="&lt;PmW" class="">timestamptz</td><td id="@MR`" class=""></td><td id="F?cC" class="">세션 종료 시각</td></tr></div><div style="display:contents" dir="ltr"><tr id="78f1dce1-3165-4969-8e70-156b0e0beda1"><td id="JS?k" class=""><code>session_date</code></td><td id="&lt;PmW" class="">date</td><td id="@MR`" class="">NOT NULL</td><td id="F?cC" class="">세션 날짜 (day_reset_time 기준)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h4 id="7f76ef4f-2ba1-4287-98d4-355b421e39f3" class=""><code>projects</code> — 프로젝트 태그</h4></div><div style="display:contents" dir="ltr"><table id="abc115bf-02f7-4868-9b68-f0ba89bc40eb" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="43f032fc-909c-4581-a0d8-3da8adcf72b2"><th id="XmKm" class="simple-table-header-color simple-table-header">컬럼</th><th id="Fcmp" class="simple-table-header-color simple-table-header">타입</th><th id="p?Cu" class="simple-table-header-color simple-table-header">제약</th><th id="GtEc" class="simple-table-header-color simple-table-header">설명</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="d7eb6240-69ec-4fe8-bb9e-13b1640f22a1"><td id="XmKm" class=""><code>id</code></td><td id="Fcmp" class="">uuid</td><td id="p?Cu" class="">PK</td><td id="GtEc" class="">프로젝트 고유 ID</td></tr></div><div style="display:contents" dir="ltr"><tr id="76f9a4f0-7599-40e6-9b18-bbbdc6689511"><td id="XmKm" class=""><code>user_id</code></td><td id="Fcmp" class="">uuid</td><td id="p?Cu" class="">FK → <a href="http://users.id">users.id</a></td><td id="GtEc" class="">소유자</td></tr></div><div style="display:contents" dir="ltr"><tr id="aabad46b-7594-4659-aa21-f2fbc4b1fb17"><td id="XmKm" class=""><code>name</code></td><td id="Fcmp" class="">text</td><td id="p?Cu" class="">NOT NULL, max 20자</td><td id="GtEc" class="">프로젝트명 (예: &quot;취업준비&quot;)</td></tr></div><div style="display:contents" dir="ltr"><tr id="49f337d6-3185-47a4-868a-d8cea2499bc8"><td id="XmKm" class=""><code>color</code></td><td id="Fcmp" class="">text</td><td id="p?Cu" class="">NOT NULL</td><td id="GtEc" class="">HEX 색상코드 (예: &quot;#3B82F6&quot;)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2a2acba9-da18-4d8a-9b86-f6883b3fdcc3"><td id="XmKm" class=""><code>is_archived</code></td><td id="Fcmp" class="">boolean</td><td id="p?Cu" class="">default false</td><td id="GtEc" class="">아카이브 여부</td></tr></div><div style="display:contents" dir="ltr"><tr id="6def4865-3754-4fab-8663-96876655e8ba"><td id="XmKm" class=""><code>sort_order</code></td><td id="Fcmp" class="">int</td><td id="p?Cu" class="">default 0</td><td id="GtEc" class="">정렬 순서</td></tr></div><div style="display:contents" dir="ltr"><tr id="7680165a-e1d0-48b6-9936-c85e3590aea2"><td id="XmKm" class=""><code>created_at</code></td><td id="Fcmp" class="">timestamptz</td><td id="p?Cu" class="">default now()</td><td id="GtEc" class="">생성일</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="d2075122-3646-4512-b54c-220b723ce096" class="">8-3. RLS (Row Level Security) 정책</h3></div><div style="display:contents" dir="ltr"><table id="235cadd8-c035-4898-a60c-f3701edeff4d" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="f2e2df10-bdc1-408e-9e85-e40a825f6378"><th id="N;Qb" class="simple-table-header-color simple-table-header">테이블</th><th id="~\m:" class="simple-table-header-color simple-table-header">정책명</th><th id="G_sn" class="simple-table-header-color simple-table-header">조건</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="9da484f3-828b-4723-899c-c151e5c1caf0"><td id="N;Qb" class="">모든 테이블</td><td id="~\m:" class=""><code>user_isolation</code></td><td id="G_sn" class=""><code>auth.uid() = user_id</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="b3ca9f1f-4099-4abb-8bd7-3d528c68fde1"><td id="N;Qb" class="">sessions</td><td id="~\m:" class=""><code>insert_own</code></td><td id="G_sn" class="">INSERT: <code>auth.uid() = user_id</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="94e8fed7-9da9-49bc-92c3-c778ff3f25fd"><td id="N;Qb" class="">sessions</td><td id="~\m:" class=""><code>update_own</code></td><td id="G_sn" class="">UPDATE: <code>auth.uid() = user_id</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="bf326a25-02fe-43d0-b870-a7b4a5a693f3"><td id="N;Qb" class="">sessions</td><td id="~\m:" class=""><code>select_own</code></td><td id="G_sn" class="">SELECT: <code>auth.uid() = user_id</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="68adf4c7-df07-4a86-b6b1-4a5298ce81fd" class="">8-4. 인덱스 전략</h3></div><div style="display:contents" dir="ltr"><table id="465a7a3d-7726-41b0-b5c8-c2612a74d706" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="f53cde3a-64f6-41ce-83d9-16183a9cfcd2"><th id="SL&lt;P" class="simple-table-header-color simple-table-header">테이블</th><th id="]FCY" class="simple-table-header-color simple-table-header">인덱스</th><th id="AhqM" class="simple-table-header-color simple-table-header">용도</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="9873f91e-c522-4430-b1a9-98a23c4a7f01"><td id="SL&lt;P" class="">sessions</td><td id="]FCY" class=""><code>idx_sessions_user_date</code> (user_id, session_date DESC)</td><td id="AhqM" class="">데일리 리포트 조회</td></tr></div><div style="display:contents" dir="ltr"><tr id="52e53fcb-75c7-4122-aef8-f86e67b6c053"><td id="SL&lt;P" class="">sessions</td><td id="]FCY" class=""><code>idx_sessions_user_project</code> (user_id, project_id)</td><td id="AhqM" class="">프로젝트별 통계</td></tr></div><div style="display:contents" dir="ltr"><tr id="bacf7338-3009-462d-9a9c-8eaf174f757e"><td id="SL&lt;P" class="">pause_events</td><td id="]FCY" class=""><code>idx_pauses_session</code> (session_id)</td><td id="AhqM" class="">세션별 정지 이벤트 조회</td></tr></div><div style="display:contents" dir="ltr"><tr id="20bd776f-6dc5-4284-be6e-3c391396595e"><td id="SL&lt;P" class="">projects</td><td id="]FCY" class=""><code>idx_projects_user</code> (user_id, is_archived)</td><td id="AhqM" class="">활성 프로젝트 리스트</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="ffac0012-a55b-401b-8263-d53fe4499337"/></div><div style="display:contents" dir="ltr"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="0fca59cd-3f78-4ffa-b8c2-7eccb7e36c15"><div style="font-size:1.5em"><span class="icon">✅</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="71c78b47-ff11-4655-a171-ab268d9bb97d" class=""><strong>기획안 작성 완료!</strong> 전체 구조:</p></div><div style="display:contents" dir="auto"><ol type="1" id="c39063b7-707f-4438-808b-34adf038b65f" class="numbered-list" start="1"><li>페인포인트 (23개 항목, 9개 카테고리)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="ea93f880-1d45-43eb-95de-a540fa6daf30" class="numbered-list" start="2"><li>PRD — 제품 요구사항 정의서</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="fd61b73e-7fac-42ba-baa0-2a868f977129" class="numbered-list" start="3"><li>MD — 경쟁사 7개 앱 비교 분석</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="ad2b5f2f-02ae-4309-a8aa-547967004426" class="numbered-list" start="4"><li>워크플로우 차트 — 메인 플로우 + 인증 시퀀스 + 상태 머신</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="18a7ea68-8805-4360-9b36-73c5ffcc83d4" class="numbered-list" start="5"><li>엣지케이스 — 14건 (P0 6건 / P1 6건 / P2 2건)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="fd72bbfe-0329-4f0d-a4ec-551e9f46cae9" class="numbered-list" start="6"><li>기능명세서 — 4개 화면, 29개 기능</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d1897f7-64d9-4995-8e04-06ca33db50e6" class="numbered-list" start="7"><li>IA — 사이트맵 + 라우팅 + 컴포넌트 트리</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="609799ef-fc5f-4e62-9e60-f21f1d2607b3" class="numbered-list" start="8"><li>ERD — 8개 테이블 + RLS + 인덱스</li></ol></div><div style="display:contents" dir="auto"><p id="40be2754-800e-4957-b69d-d18546b4478c" class=""><strong>Next Step</strong>: AntiGravity에 이 문서를 기반으로 코딩 요구사항을 전달하면 됩니다!</p></div></div></figure></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
